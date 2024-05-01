@@ -1,5 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dd5decral8i2o"]
 
+[ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
 
@@ -13,9 +15,6 @@ albedo_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_6tcwe"]
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(5, 2, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0xorw"]
-size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6xli4"]
 size = Vector3(0.5, 0.7, 0.3)
@@ -63,12 +62,11 @@ skeleton = NodePath("../..")
 
 [node name="Objects" type="Node3D" parent="Level"]
 
-[node name="Table" type="MeshInstance3D" parent="Level/Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280137, -2)
-mesh = SubResource("BoxMesh_0xorw")
+[node name="table" parent="Level/Objects" instance=ExtResource("1_rbkf7")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -0.0435683, -2.38419e-07, -1.94114)
 
 [node name="Monitor" type="MeshInstance3D" parent="Level/Objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782403, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960698, -2)
 mesh = SubResource("BoxMesh_6xli4")
 
 [node name="Chair" type="MeshInstance3D" parent="Level/Objects"]
