@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd5decral8i2o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
+albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iexhi"]
+material = SubResource("StandardMaterial3D_dhmp2")
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykn4p"]
+albedo_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6tcwe"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xorw"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6xli4"]
+size = Vector3(0.5, 0.7, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nw5mm"]
+size = Vector3(0.8, 0.2, 0.3)
+
+[node name="Office" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="CeilingLight" type="OmniLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95488, 0)
+shadow_enabled = true
+omni_range = 5.73354
+
+[node name="Foundation" type="Node3D" parent="Level"]
+
+[node name="Floor" type="MeshInstance3D" parent="Level/Foundation"]
+mesh = SubResource("BoxMesh_iexhi")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.54216)
+mesh = SubResource("BoxMesh_6tcwe")
+skeleton = NodePath("../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, 2.45784)
+mesh = SubResource("BoxMesh_6tcwe")
+skeleton = NodePath("../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.53648, 1, -0.0614709)
+mesh = SubResource("BoxMesh_6tcwe")
+skeleton = NodePath("../..")
+
+[node name="Wall4" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.46352, 1, -0.0614709)
+mesh = SubResource("BoxMesh_6tcwe")
+skeleton = NodePath("../..")
+
+[node name="Objects" type="Node3D" parent="Level"]
+
+[node name="Table" type="MeshInstance3D" parent="Level/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280137, -2)
+mesh = SubResource("BoxMesh_0xorw")
+
+[node name="Monitor" type="MeshInstance3D" parent="Level/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.782403, -2)
+mesh = SubResource("BoxMesh_6xli4")
+
+[node name="Chair" type="MeshInstance3D" parent="Level/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136643, -0.977152)
+mesh = SubResource("BoxMesh_nw5mm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.829532, -1.0654)
