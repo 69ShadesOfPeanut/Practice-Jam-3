@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cboulabfu8lq6"]
+[gd_scene load_steps=2 format=3 uid="uid://cboulabfu8lq6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d13bl"]
+font_size = 64
 
 [node name="Screen" type="Control"]
 layout_mode = 3
@@ -16,3 +19,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Welcome! Are you ready to begin?"
+label_settings = SubResource("LabelSettings_d13bl")

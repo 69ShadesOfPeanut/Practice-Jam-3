@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=14 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://k5lnrc1ttwc8" path="res://Imports/RubixCube.glb" id="3_faifh"]
 [ext_resource type="PackedScene" uid="uid://cboulabfu8lq6" path="res://Scenes/Screen.tscn" id="3_yaft4"]
 [ext_resource type="PackedScene" uid="uid://cqrfvwm8xy86h" path="res://Imports/Plant.glb" id="4_3ll4h"]
+[ext_resource type="Script" path="res://Scenes/Buttons.gd" id="7_u6eov"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -35,6 +36,7 @@ visible = false
 
 [node name="CeilingLight" type="OmniLight3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95488, 0)
+light_color = Color(1, 1, 0.941176, 1)
 shadow_enabled = true
 omni_range = 5.73354
 
@@ -70,7 +72,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -0.0435683, -2.38419e-07, -1.84724)
 
 [node name="Monitor" parent="Level/Objects/table" instance=ExtResource("2_h68b3")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.028079, 1.47197, -0.108921)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.136441, 1.47197, -0.108921)
 script = ExtResource("3_4ocov")
 
 [node name="Screen" type="MeshInstance3D" parent="Level/Objects/table/Monitor"]
@@ -82,12 +84,47 @@ mesh = SubResource("PlaneMesh_hf03q")
 size = Vector2i(1152, 648)
 
 [node name="Screen" parent="Level/Objects/table/Monitor/SubViewport" instance=ExtResource("3_yaft4")]
+unique_name_in_owner = true
 
 [node name="RubixCube" parent="Level/Objects/table" instance=ExtResource("3_faifh")]
-transform = Transform3D(-0.518923, 0, 0.854821, 0, 1, 0, -0.854821, 0, -0.518923, 0.208125, 1.57897, -1.14081)
+transform = Transform3D(-0.518923, 0, 0.854821, 0, 1, 0, -0.854821, 0, -0.518923, 0.208125, 1.5842, -1.14081)
 
 [node name="Plant" parent="Level/Objects/table" instance=ExtResource("4_3ll4h")]
 transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.289428, 1.57601, 1.37314)
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("7_u6eov")
+
+[node name="Button" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Yes"
+
+[node name="Button2" type="Button" parent="UI/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "No"
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, -1.0654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, -1.08096)
+
+[connection signal="pressed" from="UI/Buttons/Button" to="UI/Buttons" method="ButtonPress" binds= ["Yes"]]
+[connection signal="pressed" from="UI/Buttons/Button2" to="UI/Buttons" method="ButtonPress" binds= ["No"]]
