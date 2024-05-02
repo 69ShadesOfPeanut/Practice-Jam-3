@@ -16,6 +16,11 @@ run/main_scene="res://Scenes/office.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SoundSystem="*res://Autoloads/SoundSystem.gd"
+SFX="*res://Autoloads/SFX.tscn"
+
 [input]
 
 LeftClick={

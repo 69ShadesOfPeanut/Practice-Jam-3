@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=16 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cboulabfu8lq6" path="res://Scenes/Screen.tscn" id="3_yaft4"]
 [ext_resource type="PackedScene" uid="uid://cqrfvwm8xy86h" path="res://Imports/Plant.glb" id="4_3ll4h"]
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
-[ext_resource type="Script" path="res://Scenes/Buttons.gd" id="7_u6eov"]
+[ext_resource type="Script" path="res://Scripts/Buttons.gd" id="7_u6eov"]
+[ext_resource type="AudioStream" uid="uid://cu2ddvrp81r4r" path="res://Sounds/click.ogg" id="9_a0b7e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -115,6 +116,7 @@ offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_u6eov")
+ButtonClickSound = ExtResource("9_a0b7e")
 Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start?", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?")
 
 [node name="Button" type="Button" parent="UI/Buttons"]

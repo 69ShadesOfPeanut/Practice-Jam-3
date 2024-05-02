@@ -7,6 +7,7 @@ var CurrentQuestion : int = 0
 var GoodScore : int
 var BadScore : int
 # Exports
+@export var ButtonClickSound : Resource
 @export var Questions : PackedStringArray
 # Nodes
 @onready var ScreenNode : Control = get_node("%Screen")
@@ -25,6 +26,7 @@ func _ready():
 # Gets button press, adds good or bad score depending on result
 func ButtonPress(Result):
 	print("Question answered")
+	SoundSystem.PlaySound(ButtonClickSound)
 	
 	# Add score if question isnt the first
 	if CurrentQuestion == 0:
