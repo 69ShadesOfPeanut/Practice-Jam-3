@@ -8,6 +8,8 @@ var GoodScore : int
 var BadScore : int
 # Exports
 @export var ButtonClickSound : Resource
+@export var KnockingSound : Resource
+@export var SwitchOff : Resource
 @export var Questions : PackedStringArray
 # Nodes
 @onready var ScreenNode : Control = get_node("%Screen")
@@ -82,8 +84,11 @@ func QuestionCheck():
 			await get_tree().create_timer(1.5).timeout
 			ScreenText.set_text("...")
 			await get_tree().create_timer(1.5).timeout
+			SoundSystem.PlaySound(SwitchOff)
 			hide()
 			CeilingLight.hide()
-			await get_tree().create_timer(1.5).timeout
+			await get_tree().create_timer(5).timeout
+			SoundSystem.PlaySound(KnockingSound)
+			await get_tree().create_timer(3).timeout
 			show()
 			CeilingLight.show()

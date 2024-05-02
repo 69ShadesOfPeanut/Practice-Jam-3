@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=18 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
 [ext_resource type="Script" path="res://Scripts/Buttons.gd" id="7_u6eov"]
 [ext_resource type="AudioStream" uid="uid://cu2ddvrp81r4r" path="res://Sounds/click.ogg" id="9_a0b7e"]
+[ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
+[ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -117,7 +119,9 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_u6eov")
 ButtonClickSound = ExtResource("9_a0b7e")
-Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start?", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?")
+KnockingSound = ExtResource("10_ilr6g")
+SwitchOff = ExtResource("11_24fp6")
+Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start?", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Test question please ignore")
 
 [node name="Button" type="Button" parent="UI/Buttons"]
 layout_mode = 2
