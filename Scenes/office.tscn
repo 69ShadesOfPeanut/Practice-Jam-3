@@ -103,6 +103,18 @@ transform = Transform3D(-0.518923, 0, 0.854821, 0, 1, 0, -0.854821, 0, -0.518923
 [node name="Plant" parent="Level/Objects/table" instance=ExtResource("4_3ll4h")]
 transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -0.289428, 1.57601, 1.37314)
 
+[node name="Phone" parent="Level/Objects/table" instance=ExtResource("12_j38xv")]
+transform = Transform3D(1.25, 0, -2.16506, 0, 2.5, 0, 2.16506, 0, 1.25, -0.0548067, 1.53193, -1.42902)
+
+[node name="PhoneLight" type="OmniLight3D" parent="Level/Objects/table/Phone"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0875377, 0)
+light_color = Color(0.737193, 0.737193, 0.737193, 1)
+shadow_enabled = true
+shadow_bias = 0.0
+omni_range = 0.383757
+omni_attenuation = 0.450625
+
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)
 
@@ -143,9 +155,6 @@ text = "No"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, -1.08096)
-
-[node name="Phone" parent="." instance=ExtResource("12_j38xv")]
-transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0.528039, 0.61277, -1.86916)
 
 [connection signal="pressed" from="UI/Buttons/Button" to="UI/Buttons" method="ButtonPress" binds= ["Yes"]]
 [connection signal="pressed" from="UI/Buttons/Button2" to="UI/Buttons" method="ButtonPress" binds= ["No"]]
