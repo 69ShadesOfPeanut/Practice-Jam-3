@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=22 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
 [ext_resource type="Script" path="res://Scripts/Buttons.gd" id="7_u6eov"]
 [ext_resource type="AudioStream" uid="uid://cu2ddvrp81r4r" path="res://Sounds/click.ogg" id="9_a0b7e"]
+[ext_resource type="Texture2D" uid="uid://dfssj4pquqpdn" path="res://Textures/CreepyPainting.png" id="9_ql82j"]
 [ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
 [ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 [ext_resource type="PackedScene" uid="uid://bqc5r1klgcrur" path="res://Imports/Phone.glb" id="12_j38xv"]
@@ -31,6 +32,12 @@ size = Vector3(5, 2, 0.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hf03q"]
 size = Vector2(0.65, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlj0d"]
+albedo_texture = ExtResource("9_ql82j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_h8s45"]
+size = Vector2(0.731, 1.066)
 
 [node name="Office" type="Node"]
 
@@ -117,6 +124,13 @@ omni_attenuation = 0.450625
 
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)
+
+[node name="CreepyFaceCover" type="MeshInstance3D" parent="Level/Objects/Painting"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00185829, 0.561266, 0.0162866)
+visible = false
+material_override = SubResource("StandardMaterial3D_nlj0d")
+mesh = SubResource("QuadMesh_h8s45")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
