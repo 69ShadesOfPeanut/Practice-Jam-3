@@ -2,10 +2,12 @@
 extends HBoxContainer
 
 # Vars
-var CurrentQuestion : int = 0
+@export var CurrentQuestion : int = 0
 # Stats
 var GoodScore : int
 var BadScore : int
+# Resources
+const OFFICE_DOOR_CLOSE_001 = preload("res://Sounds/Office Door Close-001.wav")
 # Exports
 @export var ButtonClickSound : Resource
 @export var KnockingSound : Resource
@@ -18,6 +20,7 @@ var BadScore : int
 @onready var Button2 : Button = get_node("Button2")
 @onready var ProgressBarNode : ProgressBar = ScreenNode.get_node("%ProgressBar")
 @onready var CeilingLight : OmniLight3D = get_node("%CeilingLight")
+@onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
 
 
 # Sets the first question into motion
@@ -35,6 +38,8 @@ func ButtonPress(Result):
 		if Result == "No":
 			ScreenText.set_text("You have no free will")
 			await get_tree().create_timer(0.2).timeout
+	elif  CurrentQuestion == 10:
+		await Question10Event()
 	else:
 		if Result == "Yes":
 			GoodScore += 1
@@ -51,7 +56,7 @@ func ButtonPress(Result):
 	Button2.disabled = true
 	
 	# Check question for events
-	await QuestionCheck()
+	await QuestionCheck(Result)
 	
 	CurrentQuestion += 1
 	NextQuestion()
@@ -76,7 +81,7 @@ func NextQuestion():
 	Button2.disabled = false
 
 # Checks question for if there should be an event
-func QuestionCheck():
+func QuestionCheck(Result):
 	match CurrentQuestion:
 		4:
 			print("Question 4 event triggered")
@@ -93,3 +98,20 @@ func QuestionCheck():
 			await get_tree().create_timer(3).timeout
 			show()
 			CeilingLight.show()
+		10:
+			# IDEAS: Play door opening and footsteps behind player
+			# If the player says yes flash "Don't lie to me" on screen
+			print("Question 10 event triggered")
+			if Result == "Yes":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(2).timeout
+				ScreenText.set_text("Don't lie to me...")
+				await get_tree().create_timer(0.3).timeout
+
+
+# Question 10 prechoice event
+func Question10Event():
+	print("Question 10 prechoice event")
+	await get_tree().create_timer(1).timeout
+	Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
+	Audio3D.play()

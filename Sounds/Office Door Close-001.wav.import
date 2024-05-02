@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlqqcyiuyxho7"
+path="res://.godot/imported/Office Door Close-001.wav-20c7e04451c53f434081a0b7224c3707.sample"
+
+[deps]
+
+source_file="res://Sounds/Office Door Close-001.wav"
+dest_files=["res://.godot/imported/Office Door Close-001.wav-20c7e04451c53f434081a0b7224c3707.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
