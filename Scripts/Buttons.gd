@@ -21,7 +21,7 @@ const OFFICE_DOOR_CLOSE_001 = preload("res://Sounds/Office Door Close-001.wav")
 @onready var ProgressBarNode : ProgressBar = ScreenNode.get_node("%ProgressBar")
 @onready var CeilingLight : OmniLight3D = get_node("%CeilingLight")
 @onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
-@onready var CreepyFaceCover : MeshInstance3D = get_node("%CreepyFaceCover")
+@onready var CreepyPainting : MeshInstance3D = get_node("%CreepyPainting")
 
 
 # Sets the first question into motion
@@ -99,9 +99,9 @@ func QuestionCheck(Result):
 			await get_tree().create_timer(3).timeout
 			show()
 			CeilingLight.show()
-			CreepyFaceCover.show()
+			CreepyPainting.show()
 		5:
-			CreepyFaceCover.hide()
+			CreepyPainting.hide()
 		10:
 			print("Question 10 event triggered")
 			if Result == "Yes":

@@ -33,11 +33,11 @@ size = Vector3(5, 2, 0.1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_hf03q"]
 size = Vector2(0.65, 0.65)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlj0d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5v1c"]
 albedo_texture = ExtResource("9_ql82j")
 
-[sub_resource type="QuadMesh" id="QuadMesh_h8s45"]
-size = Vector2(0.731, 1.066)
+[sub_resource type="QuadMesh" id="QuadMesh_qg8wr"]
+size = Vector2(0.212, 0.3)
 
 [node name="Office" type="Node"]
 
@@ -125,12 +125,12 @@ omni_attenuation = 0.450625
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)
 
-[node name="CreepyFaceCover" type="MeshInstance3D" parent="Level/Objects/Painting"]
+[node name="CreepyPainting" type="MeshInstance3D" parent="Level/Objects/Painting"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00185829, 0.561266, 0.0162866)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182547, 0.597292, 0.0098021)
 visible = false
-material_override = SubResource("StandardMaterial3D_nlj0d")
-mesh = SubResource("QuadMesh_h8s45")
+material_override = SubResource("StandardMaterial3D_i5v1c")
+mesh = SubResource("QuadMesh_qg8wr")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -150,10 +150,11 @@ offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_u6eov")
+CurrentQuestion = 4
 ButtonClickSound = ExtResource("9_a0b7e")
 KnockingSound = ExtResource("10_ilr6g")
 SwitchOff = ExtResource("11_24fp6")
-Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "End of playtest, please exit the game")
+Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?")
 
 [node name="Button" type="Button" parent="UI/Buttons"]
 layout_mode = 2
