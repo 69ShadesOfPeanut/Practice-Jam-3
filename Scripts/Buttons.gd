@@ -99,8 +99,6 @@ func QuestionCheck(Result):
 			show()
 			CeilingLight.show()
 		10:
-			# IDEAS: Play door opening and footsteps behind player
-			# If the player says yes flash "Don't lie to me" on screen
 			print("Question 10 event triggered")
 			if Result == "Yes":
 				ScreenText.set_text("...")
