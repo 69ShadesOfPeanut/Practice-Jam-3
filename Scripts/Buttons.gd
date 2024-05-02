@@ -103,7 +103,7 @@ func QuestionCheck(Result):
 			if Result == "Yes":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(2).timeout
-				ScreenText.set_text("Don't lie to me...")
+				ScreenText.set_text("Don't lie to me.")
 				await get_tree().create_timer(0.3).timeout
 
 
