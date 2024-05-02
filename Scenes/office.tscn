@@ -79,7 +79,7 @@ transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 
 script = ExtResource("3_4ocov")
 
 [node name="Screen" type="MeshInstance3D" parent="Level/Objects/table/Monitor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.679105, 0.425373)
+transform = Transform3D(1, 6.77626e-21, -8.07794e-28, 0, -4.37114e-08, -1, -6.77626e-21, 1, -4.37114e-08, 0, 0.679105, 0.425373)
 material_override = SubResource("StandardMaterial3D_acmpr")
 mesh = SubResource("PlaneMesh_hf03q")
 
