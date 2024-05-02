@@ -46,6 +46,10 @@ func ButtonPress(Result):
 		print("Good score: " + str(GoodScore) + "\n"\
 		+ "Bad score: " + str(BadScore))
 	
+	# Buttons disabled
+	Button1.disabled = true
+	Button2.disabled = true
+	
 	# Check question for events
 	await QuestionCheck()
 	
@@ -54,9 +58,6 @@ func ButtonPress(Result):
 
 # Function to get the next question up
 func NextQuestion():
-	Button1.disabled = true
-	Button2.disabled = true
-	
 	ScreenText.set_text("...")
 	await get_tree().create_timer(1).timeout
 	ScreenText.set_text("Please wait...")
