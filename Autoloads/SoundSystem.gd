@@ -8,11 +8,12 @@ const OFFICE_COMPUTER_PC_FAN_NOISE_LOOP = preload("res://Sounds/Office Computer 
 
 # Automatically starts playing ambience
 func _ready():
+	print("Ambience loaded up")
 	Ambience.set_stream(OFFICE_COMPUTER_PC_FAN_NOISE_LOOP)
 	Ambience.play()
 
 # Plays a sound when called
 func PlaySound(Sound):
-	print('Play sound called')
+	print("Play sound called")
 	SFX.set_stream(Sound)
 	SFX.play()
