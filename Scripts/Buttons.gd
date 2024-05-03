@@ -175,6 +175,13 @@ func QuestionCheck(Result):
 			Audio3D.stop()
 			show()
 			CeilingLight.show()
+		26:
+			print("Question 26 event triggered")
+			if Result == "No":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(1).timeout
+				ScreenText.set_text("Your personal hell")
+				await get_tree().create_timer(0.3).timeout
 
 
 # Question 10 prechoice event
