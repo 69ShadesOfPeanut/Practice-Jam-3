@@ -8,6 +8,10 @@ var GoodScore : int
 var BadScore : int
 # Resources
 const OFFICE_DOOR_CLOSE_001 = preload("res://Sounds/Office Door Close-001.wav")
+const OFFICE_DOOR_OPEN_003 = preload("res://Sounds/Office Door Open-003.wav")
+const MONSTER_BREATHING_SLOWLY_1 = preload("res://Sounds/monster_breathing_slowly_1.wav")
+const TELEPHONE = preload("res://Sounds/telephone.mp3")
+const PERSON = preload("res://Textures/Person.PNG")
 # Exports
 @export var ButtonClickSound : Resource
 @export var KnockingSound : Resource
@@ -22,6 +26,7 @@ const OFFICE_DOOR_CLOSE_001 = preload("res://Sounds/Office Door Close-001.wav")
 @onready var CeilingLight : OmniLight3D = get_node("%CeilingLight")
 @onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
 @onready var CreepyPainting : MeshInstance3D = get_node("%CreepyPainting")
+@onready var ScreenTextureRect : TextureRect = ScreenNode.get_node("%TextureRect")
 
 
 # Sets the first question into motion
@@ -104,7 +109,7 @@ func QuestionCheck(Result):
 			CreepyPainting.hide()
 		10:
 			print("Question 10 event triggered")
-			if Result == "Yes":
+			if Result == "No":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(2).timeout
 				ScreenText.set_text("Don't lie to me.")
@@ -122,6 +127,51 @@ func QuestionCheck(Result):
 				await get_tree().create_timer(2).timeout
 				ScreenText.set_text("Check it.")
 				await get_tree().create_timer(0.3).timeout
+		14:
+			print("Question 14 event triggered")
+			ScreenText.set_text("...")
+			await get_tree().create_timer(1).timeout
+			ScreenTextureRect.show()
+			await get_tree().create_timer(1).timeout
+			ScreenTextureRect.hide()
+		15:
+			print("Question 15 event triggered")
+			if Result == "No":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(1).timeout
+				ScreenText.set_text("Don't lie.")
+				await get_tree().create_timer(0.3).timeout
+		17:
+			print("Question 17 event triggered")
+			if Result == "No":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(1).timeout
+				ScreenText.set_text("Check again.")
+				await get_tree().create_timer(0.3).timeout
+		22:
+			print("Question 22 event triggered")
+			ScreenText.set_text("...")
+			await get_tree().create_timer(1).timeout
+			ScreenText.set_text("You have been this whole time.")
+			await get_tree().create_timer(0.3).timeout
+			SoundSystem.PlaySound(SwitchOff)
+			hide()
+			CeilingLight.hide()
+			await get_tree().create_timer(0.7).timeout
+			Audio3D.set_stream(OFFICE_DOOR_OPEN_003)
+			Audio3D.set_volume_db(10)
+			Audio3D.play()
+			await get_tree().create_timer(1.5).timeout
+			Audio3D.set_stream(MONSTER_BREATHING_SLOWLY_1)
+			Audio3D.set_volume_db(3)
+			Audio3D.play()
+			await get_tree().create_timer(20).timeout
+			SoundSystem.PlaySound(TELEPHONE)
+			await get_tree().create_timer(12).timeout
+			SoundSystem.StopSound()
+			Audio3D.stop()
+			show()
+			CeilingLight.show()
 
 
 # Question 10 prechoice event

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cboulabfu8lq6"]
+[gd_scene load_steps=3 format=3 uid="uid://cboulabfu8lq6"]
+
+[ext_resource type="Texture2D" uid="uid://cofmvdfjpbugm" path="res://Textures/Person.PNG" id="1_vv770"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d13bl"]
 font_size = 64
@@ -45,3 +47,11 @@ visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(700, 600)
+layout_mode = 2
+texture = ExtResource("1_vv770")
+expand_mode = 1
