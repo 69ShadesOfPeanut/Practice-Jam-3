@@ -124,7 +124,7 @@ omni_range = 0.383757
 omni_attenuation = 0.450625
 
 [node name="PhotoFrame" parent="Level/Objects/table" instance=ExtResource("8_7enif")]
-transform = Transform3D(-0.733493, 0, 0.679697, 0, 1, 0, -0.679697, 0, -0.733493, 0.314795, 1.57608, 1.52062)
+transform = Transform3D(-0.733493, 0, 0.679697, 0, 1, 0, -0.679697, 0, -0.733493, 0.314795, 1.56747, 1.52062)
 
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)
