@@ -27,6 +27,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
 @onready var CreepyPainting : MeshInstance3D = get_node("%CreepyPainting")
 @onready var ScreenTextureRect : TextureRect = ScreenNode.get_node("%TextureRect")
+@onready var FamilyPhoto : MeshInstance3D = get_node("%FamilyPhoto")
 
 
 # Sets the first question into motion
@@ -114,6 +115,8 @@ func QuestionCheck(Result):
 				await get_tree().create_timer(2).timeout
 				ScreenText.set_text("Don't lie to me.")
 				await get_tree().create_timer(0.3).timeout
+		11:
+			FamilyPhoto.hide()
 		12:
 			print("Question 12 event triggered")
 			ScreenText.set_text("...")
@@ -178,5 +181,6 @@ func QuestionCheck(Result):
 func Question10Event():
 	print("Question 10 prechoice event")
 	await get_tree().create_timer(1).timeout
+	FamilyPhoto.show()
 	Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
 	Audio3D.play()
