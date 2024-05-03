@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=23 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cqrfvwm8xy86h" path="res://Imports/Plant.glb" id="4_3ll4h"]
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
 [ext_resource type="Script" path="res://Scripts/Buttons.gd" id="7_u6eov"]
+[ext_resource type="PackedScene" uid="uid://bc7lrpbsumwyc" path="res://Imports/PhotoFrame.glb" id="8_7enif"]
 [ext_resource type="AudioStream" uid="uid://cu2ddvrp81r4r" path="res://Sounds/click.ogg" id="9_a0b7e"]
 [ext_resource type="Texture2D" uid="uid://dfssj4pquqpdn" path="res://Textures/CreepyPainting.png" id="9_ql82j"]
 [ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
@@ -121,6 +122,9 @@ shadow_enabled = true
 shadow_bias = 0.0
 omni_range = 0.383757
 omni_attenuation = 0.450625
+
+[node name="PhotoFrame" parent="Level/Objects/table" instance=ExtResource("8_7enif")]
+transform = Transform3D(-0.733493, 0, 0.679697, 0, 1, 0, -0.679697, 0, -0.733493, 0.314795, 1.57608, 1.52062)
 
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)
