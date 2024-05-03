@@ -153,7 +153,7 @@ script = ExtResource("7_u6eov")
 ButtonClickSound = ExtResource("9_a0b7e")
 KnockingSound = ExtResource("10_ilr6g")
 SwitchOff = ExtResource("11_24fp6")
-Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?")
+Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?", "Is your phone nearby?")
 
 [node name="Button" type="Button" parent="UI/Buttons"]
 layout_mode = 2

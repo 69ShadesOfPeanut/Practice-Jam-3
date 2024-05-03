@@ -115,6 +115,13 @@ func QuestionCheck(Result):
 			await get_tree().create_timer(2).timeout
 			ScreenText.set_text("Are you sure?")
 			await get_tree().create_timer(0.3).timeout
+		13:
+			print("Question 13 event triggered")
+			if Result == "Yes":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(2).timeout
+				ScreenText.set_text("Check it.")
+				await get_tree().create_timer(0.3).timeout
 
 
 # Question 10 prechoice event
