@@ -15,13 +15,16 @@ const GOOD_ENDING_NEWS_PAPER = preload("res://Textures/GoodEnding_NewsPaper.png"
 @onready var Camera1 : Camera3D = get_node("%Camera1")
 @onready var LabelAnimationPlayer : AnimationPlayer = get_node("%LabelAnimationPlayer")
 @onready var NewsPaper : MeshInstance3D = get_node("%NewsPaper")
+@onready var EndingText : Label = get_node("%EndingText")
 
 # Script that runs when the scene loads
 func _ready():
 	if GlobalVars.Ending == "Good":
 		NewsPaper.material_override.set_texture(0, GOOD_ENDING_NEWS_PAPER)
+		EndingText.set_text("Ending 1 of 2")
 	else:
 		NewsPaper.material_override.set_texture(0, BAD_ENDING_NEWS_PAPER)
+		EndingText.set_text("Ending 2 of 2")
 	
 	Ambience.set_stream(RAIN_ON_ROOF_FROM_INSIDE_1)
 	Ambience.play()

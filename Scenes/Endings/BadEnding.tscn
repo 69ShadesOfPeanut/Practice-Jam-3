@@ -450,12 +450,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/CenterContainer"]
+[node name="EndingText" type="Label" parent="UI/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Ending 1 of 2."
+text = "Ending placeholder text"
 label_settings = SubResource("LabelSettings_o4gtl")
 
-[node name="LabelAnimationPlayer" type="AnimationPlayer" parent="UI/CenterContainer/Label"]
+[node name="LabelAnimationPlayer" type="AnimationPlayer" parent="UI/CenterContainer/EndingText"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ldqte")
