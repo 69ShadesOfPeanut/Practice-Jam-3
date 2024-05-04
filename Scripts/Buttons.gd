@@ -222,6 +222,9 @@ func Question10Event():
 func Ending():
 	if GoodScore > BadScore:
 		print("Good ending")
+		GlobalVars.Ending = "Good"
+		get_tree().change_scene_to_file("res://Scenes/Endings/BadEnding.tscn")
 	else:
 		print("Bad ending")
+		GlobalVars.Ending = "Bad"
 		get_tree().change_scene_to_file("res://Scenes/Endings/BadEnding.tscn")

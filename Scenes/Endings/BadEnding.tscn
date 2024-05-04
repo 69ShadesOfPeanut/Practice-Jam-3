@@ -415,6 +415,7 @@ transform = Transform3D(1, -1.42109e-14, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e
 transform = Transform3D(0.909693, -5.25657e-09, -0.415281, 0.415281, -1.95389e-08, 0.909694, -1.28959e-08, -1, -1.55915e-08, 0.298096, 33.1558, 4.51903)
 
 [node name="NewsPaper" type="MeshInstance3D" parent="Level/Foundation/Furniture"]
+unique_name_in_owner = true
 transform = Transform3D(0.977335, -0.2117, -3.6574e-08, 3.06774e-08, -3.11381e-08, 1, -0.2117, -0.977335, -2.39379e-08, 0.282651, 0.02408, 0.224229)
 material_override = SubResource("StandardMaterial3D_10sbx")
 mesh = SubResource("QuadMesh_hyf6k")
