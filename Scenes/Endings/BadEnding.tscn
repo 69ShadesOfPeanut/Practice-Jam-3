@@ -1,0 +1,463 @@
+[gd_scene load_steps=34 format=3 uid="uid://shucs0kc0aeg"]
+
+[ext_resource type="PackedScene" uid="uid://cm7x2lgv52j6k" path="res://Imports/Wall.glb" id="1_l2t81"]
+[ext_resource type="Script" path="res://Scripts/BadEnding.gd" id="1_m45l2"]
+[ext_resource type="PackedScene" uid="uid://dim1jwavqmy7x" path="res://Imports/Floor.glb" id="2_r2g7p"]
+[ext_resource type="PackedScene" uid="uid://bujxyjdojk7l4" path="res://Imports/ShowerTable.glb" id="3_depjt"]
+[ext_resource type="PackedScene" uid="uid://ctycg57qglbiy" path="res://Imports/Toilet.glb" id="4_5a2fd"]
+[ext_resource type="PackedScene" uid="uid://bgyo1rslyvxyd" path="res://Imports/Toilet2.glb" id="5_rxo81"]
+[ext_resource type="PackedScene" uid="uid://cfqwdkvq2fj06" path="res://Imports/ToiletPaper.glb" id="6_c8wcu"]
+[ext_resource type="PackedScene" uid="uid://bi0jjr0dxpgst" path="res://Imports/Mirror.glb" id="7_7nss1"]
+[ext_resource type="PackedScene" uid="uid://d0i24676lqnj8" path="res://Imports/SoapBottle.glb" id="8_7raq7"]
+[ext_resource type="PackedScene" uid="uid://c6roq2sl76cxt" path="res://Imports/Shower.glb" id="9_to32b"]
+[ext_resource type="PackedScene" uid="uid://x74juqypghlt" path="res://Imports/Toothbrush.glb" id="10_hv35b"]
+[ext_resource type="PackedScene" uid="uid://doy40vjgie7hd" path="res://Imports/Bin.glb" id="11_wqck7"]
+[ext_resource type="PackedScene" uid="uid://c2pmi22132elg" path="res://Imports/BathRug.glb" id="12_73chg"]
+[ext_resource type="PackedScene" uid="uid://dxt82juiwxqnm" path="res://Imports/Lamp.glb" id="13_4sddh"]
+[ext_resource type="PackedScene" uid="uid://cqqgyb76pkhib" path="res://Imports/AlcoholBottleHalf.glb" id="14_8dfhj"]
+[ext_resource type="PackedScene" uid="uid://cqlrxd7s6rfqr" path="res://Imports/AlcoholBottleEmpty.glb" id="15_kqm8u"]
+[ext_resource type="Script" path="res://Scripts/FlickeringLights.gd" id="16_6tiss"]
+[ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="16_q526s"]
+[ext_resource type="PackedScene" uid="uid://bkhwd6rbu33rk" path="res://Imports/PillBottle2.glb" id="17_5xaqf"]
+[ext_resource type="PackedScene" uid="uid://6k6re80i4127" path="res://Imports/Pill2.glb" id="17_pfd7v"]
+[ext_resource type="PackedScene" uid="uid://dotpkgwnttee7" path="res://Imports/Pill1.glb" id="18_eevry"]
+[ext_resource type="PackedScene" uid="uid://ddcuanebyvpe4" path="res://Imports/Pill3.glb" id="19_3bl7n"]
+[ext_resource type="Texture2D" uid="uid://chw2xsp5d7s2c" path="res://Textures/BadEnding_NewsPaper.png" id="21_1mkpa"]
+[ext_resource type="PackedScene" uid="uid://cktpcejohvsrw" path="res://Imports/Lamp2.glb" id="23_ks5of"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10sbx"]
+albedo_texture = ExtResource("21_1mkpa")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hyf6k"]
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="Animation" id="Animation_13nuj"]
+resource_name = "Camera"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.281858, 0.0783114, 0.221755), Vector3(0.281879, 0.175615, 0.221792), Vector3(0.282, 0.727, 0.222)]
+}
+
+[sub_resource type="Animation" id="Animation_fk1kn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.281858, 0.0783114, 0.221755)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1st0g"]
+_data = {
+"Camera": SubResource("Animation_13nuj"),
+"RESET": SubResource("Animation_fk1kn")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4gtl"]
+font_size = 64
+font_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_1rkwy"]
+resource_name = "EndingText"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_me1yd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldqte"]
+_data = {
+"EndingText": SubResource("Animation_1rkwy"),
+"RESET": SubResource("Animation_me1yd")
+}
+
+[node name="BadEnding" type="Node"]
+script = ExtResource("1_m45l2")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="CeilingLight" type="OmniLight3D" parent="Level"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.232575, 0.50293, 0.286991)
+light_color = Color(0.40418, 0.394524, 0.393237, 1)
+shadow_enabled = true
+omni_range = 5.73354
+omni_attenuation = 0.329877
+
+[node name="Foundation" type="Node3D" parent="Level"]
+
+[node name="Walls" type="Node3D" parent="Level/Foundation"]
+
+[node name="Wall" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Wall2" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.5, 0, 0)
+
+[node name="Wall3" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(-8.74228e-07, 0, -20, 0, 20, 0, 20, 0, -8.74228e-07, 0.76, 0, 0.26)
+
+[node name="Wall6" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(-20, 0, 1.74846e-06, 0, 20, 0, -1.74846e-06, 0, -20, 0.5, 0, 0.52)
+
+[node name="Wall4" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -0.26, 0, 0.26)
+
+[node name="Wall5" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(-20, 0, -1.74846e-06, 0, 20, 0, 1.74846e-06, 0, -20, -2.98023e-08, 0, 0.52)
+
+[node name="Wall7" parent="Level/Foundation/Walls" instance=ExtResource("1_l2t81")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, 0.01, 0, -0.04)
+
+[node name="Floor" type="Node3D" parent="Level/Foundation"]
+
+[node name="Floor" parent="Level/Foundation/Floor" instance=ExtResource("2_r2g7p")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0.26)
+
+[node name="Floor2" parent="Level/Foundation/Floor" instance=ExtResource("2_r2g7p")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.5, 0, 0.26)
+
+[node name="Furniture" type="Node3D" parent="Level/Foundation"]
+
+[node name="ShowerTable" parent="Level/Foundation/Furniture" instance=ExtResource("3_depjt")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.27, 0, 0.07)
+
+[node name="SoapBottle" parent="Level/Foundation/Furniture/ShowerTable" instance=ExtResource("8_7raq7")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.0045, 0.00883152, -0.0005)
+
+[node name="Mirror" parent="Level/Foundation/Furniture/ShowerTable" instance=ExtResource("7_7nss1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.31323e-10, 0.011, -0.00221967)
+
+[node name="Toothbrush" parent="Level/Foundation/Furniture/ShowerTable" instance=ExtResource("10_hv35b")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.004, 0.0088378, 0.0005)
+
+[node name="Toilet" parent="Level/Foundation/Furniture" instance=ExtResource("4_5a2fd")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.62, 0.0212387, 0.1)
+
+[node name="Toilet2" parent="Level/Foundation/Furniture/Toilet" instance=ExtResource("5_rxo81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, -6.19332e-05, 0.0015)
+
+[node name="ToiletPaper2" parent="Level/Foundation/Furniture/Toilet" instance=ExtResource("6_c8wcu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00616069, 0.00643807, 0.003)
+
+[node name="Shower" parent="Level/Foundation/Furniture" instance=ExtResource("9_to32b")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -0.13, 0.02, 0.11)
+
+[node name="BathRug" parent="Level/Foundation/Furniture/Shower" instance=ExtResource("12_73chg")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.0095, 0.000138224, 0.001)
+
+[node name="Bin" parent="Level/Foundation/Furniture" instance=ExtResource("11_wqck7")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.06, 0.0232249, 0.05)
+
+[node name="Lamp" parent="Level/Foundation/Furniture" instance=ExtResource("13_4sddh")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.45, 0.33, 0.02)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Level/Foundation/Furniture/Lamp"]
+transform = Transform3D(0.05, 0, 0, 0, 0.025, 0.0433013, 0, -0.0433013, 0.025, 0, -3.72529e-09, 0.001)
+light_color = Color(0.691357, 0.691357, 0.691357, 1)
+light_energy = 0.464
+spot_range = 0.31
+spot_attenuation = 0.25
+spot_angle = 33.9703
+
+[node name="Lamp2" parent="Level/Foundation/Furniture" instance=ExtResource("13_4sddh")]
+transform = Transform3D(-8.74228e-07, 0, 20, 0, 20, 0, -20, 0, -8.74228e-07, -0.24, 0.33, 0.35)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Level/Foundation/Furniture/Lamp2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.025, 0.0433013, 0, -0.0433013, 0.025, 0, -3.72529e-09, 0.001)
+light_color = Color(0.691357, 0.691357, 0.691357, 1)
+light_energy = 0.464
+spot_range = 0.31
+spot_attenuation = 0.25
+spot_angle = 33.9703
+
+[node name="Lamp3" parent="Level/Foundation/Furniture" instance=ExtResource("23_ks5of")]
+transform = Transform3D(10, 0, 0, 0, 2.58819, 9.65926, 0, -9.65926, 2.58819, 0.194454, 0.0379387, 0.283019)
+
+[node name="CeilingLight" type="OmniLight3D" parent="Level/Foundation/Furniture/Lamp3"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 3.72529e-09, 0, -3.72529e-09, 0.1, 0, 0.0128411, -1.86265e-09)
+light_color = Color(0.206045, 0.200059, 0.199261, 1)
+shadow_enabled = true
+omni_range = 0.21436
+script = ExtResource("16_6tiss")
+MinTime = 0.2
+MaxTime = 2.0
+
+[node name="Trash_Pills" type="Node3D" parent="Level/Foundation/Furniture"]
+unique_name_in_owner = true
+visible = false
+
+[node name="AlcoholBottleHalf" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("14_8dfhj")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.17, 0.176571, 0.04)
+
+[node name="AlcoholBottleHalf2" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("14_8dfhj")]
+transform = Transform3D(0.000866025, -0.0005, 0, 0.0005, 0.000866025, 0, 0, 0, 0.001, 0.404735, 0.0235098, 0.109594)
+
+[node name="AlcoholBottleHalf3" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("14_8dfhj")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.0399999, 0.0235098, 0.2)
+
+[node name="AlcoholBottleEmpty" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.000707107, 0, 0.000707107, 0, 0.001, 0, -0.000707107, 0, 0.000707107, 0.05, 0.0232095, 0.18)
+
+[node name="AlcoholBottleEmpty2" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.14, 0.0232095, 0.12)
+
+[node name="AlcoholBottleEmpty3" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.0005, 0, -0.000866025, 0, 0.001, 0, 0.000866025, 0, 0.0005, 0.42, 0.0232095, 0.12)
+
+[node name="AlcoholBottleEmpty5" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(-0.000965926, 0, -0.000258819, 0, 0.001, 0, 0.000258819, 0, -0.000965926, 0.17, 0.0232095, 0.37)
+
+[node name="AlcoholBottleEmpty6" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.001, 0, 8.73115e-11, 0, 0.001, 0, -8.73115e-11, 0, 0.001, 0.43, 0.0232095, 0.24)
+
+[node name="AlcoholBottleEmpty7" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.001, 0, 8.73115e-11, 0, 0.001, 0, -8.73115e-11, 0, 0.001, 0.49, 0.0232095, 0.41)
+
+[node name="AlcoholBottleEmpty4" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("15_kqm8u")]
+transform = Transform3D(0.0005, 0, 0.000866025, 0, 0.001, 0, -0.000866025, 0, 0.0005, 0.37, 0.173209, 0.07)
+
+[node name="PillBottle1" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("16_q526s")]
+transform = Transform3D(0.000866025, 0, -0.0005, 0, 0.001, 0, 0.0005, 0, 0.000866025, 0.38, 0.176213, 0.08)
+
+[node name="PillBottle3" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("16_q526s")]
+transform = Transform3D(-5.82077e-11, 0, -0.001, 0, 0.001, 0, 0.001, 0, -5.82077e-11, 0.4, 0.0262128, 0.13)
+
+[node name="PillBottle4" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("16_q526s")]
+transform = Transform3D(2.54434e-18, 0.001, 4.37114e-11, 5.82077e-11, -4.37114e-11, 0.001, 0.001, 0, -5.82077e-11, 0.06, 0.0262128, 0.2)
+
+[node name="Pill2" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(1, 5.82077e-08, -5.82077e-08, -5.82077e-08, -4.37114e-08, -1, -5.82077e-08, 1, -4.37114e-08, 4.65578, 28.2155, -2.11463)
+
+[node name="Pill3" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(-0.0148697, 5.82077e-08, -0.999889, -0.999889, -4.37114e-08, 0.0148697, -4.2841e-08, 1, 5.88512e-08, -8.66257, 20.2472, -2.11462)
+
+[node name="Pill4" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(-0.267507, 5.82076e-08, 0.963556, 0.963556, -4.37114e-08, 0.267507, 5.76893e-08, 1, -4.43932e-08, 8.69125, 14.7399, -2.11461)
+
+[node name="Pill5" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(0.0828604, 5.82077e-08, -0.996561, -0.996561, -4.37114e-08, -0.0828604, -4.83842e-08, 1, 5.43856e-08, -5.84827, 41.1351, -2.11461)
+
+[node name="Pill6" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(0.664657, -1.23525e-07, 0.747149, -0.747149, -1.43948e-08, 0.664657, -7.1347e-08, -1, -1.01859e-07, -12.9313, 11.0821, -2.3357)
+
+[node name="Pill7" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(0.961617, -8.21961e-08, 0.274395, -0.274395, -4.03558e-08, 0.961617, -6.79677e-08, -1, -6.1361e-08, 8.29047, 37.3804, -2.3357)
+
+[node name="Pill8" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.93328, -8.96055e-08, 0.35915, -0.35915, 1.25301e-07, -0.93328, 3.86251e-08, -1, -1.49123e-07, -12.7064, 29.7073, -2.3357)
+
+[node name="Pill1" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("18_eevry")]
+transform = Transform3D(1, -8.47033e-22, 0, 8.47033e-22, 1, 0, 0, 3.69779e-29, 1, -5.26877, 27.031, -1.3236)
+
+[node name="Pill9" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.0792769, 0.996853, 1.06396e-07, -0.996853, -0.0792769, 1.08478e-08, 1.92484e-08, -1.05201e-07, 1, 0.0119781, 48.746, -1.3236)
+
+[node name="Pill10" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle4" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.228963, 0.973435, 1.14085e-07, -0.973435, -0.228963, 2.94173e-09, 2.89848e-08, -1.10381e-07, 1, 8.43069, 23.1259, -1.32359)
+
+[node name="PillBottle2" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("16_q526s")]
+transform = Transform3D(0.000866025, -0.0005, -5.59339e-11, 0, 4.36557e-11, -0.001, 0.0005, 0.000866025, 2.91038e-11, 0.19, 0.181043, 0.05)
+
+[node name="Pill6" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle2" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.0376203, -0.999293, 6.87128e-08, 0.999293, -0.0376203, -7.33975e-08, 1.01833e-07, 4.20691e-08, 1, -6.18121, 22.3853, 4.03036)
+
+[node name="Pill7" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle2" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.579139, -0.815229, 9.21878e-08, 0.81523, -0.579139, -3.90131e-08, 9.37972e-08, 1.84288e-08, 1, -4.97681, 32.1657, 3.07576)
+
+[node name="Pill8" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle2" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.229523, 0.973304, -6.34187e-09, -0.973304, -0.229523, 4.98112e-08, 1.57175e-08, 3.36915e-08, 1, 3.04649, 34.6906, 3.07564)
+
+[node name="Pill9" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle2" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.345659, -4.29625e-08, -0.938361, 0.938361, 7.14952e-08, -0.345659, 9.91725e-08, -1, -1.509e-08, -13.039, 28.7804, 4.03976)
+
+[node name="Pill10" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle2" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.704126, -6.38281e-08, -0.710075, 0.710075, 5.82072e-08, -0.704127, 8.92065e-08, -1, -3.07392e-08, 1.23215, 22.9897, 4.03973)
+
+[node name="PillBottle5" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-3.78552e-11, 0.001, 2.18557e-11, -0.000866025, -4.37114e-11, 0.0005, 0.0005, 0, 0.000866025, 0.21, 0.0292937, 0.29)
+
+[node name="Pill2" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(-0.194675, -0.866025, -0.460545, -0.92109, 7.27039e-08, 0.389349, -0.337186, 0.5, -0.797687, 9.56244, 47.5788, 6.25641)
+
+[node name="Pill3" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(0.134889, -0.866025, -0.481461, -0.962923, -1.46075e-08, -0.269777, 0.233634, 0.5, -0.833916, -0.392731, 57.4583, -10.9864)
+
+[node name="Pill4" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(-0.497192, -0.866025, 0.052915, 0.10583, -7.28152e-08, 0.994384, -0.861162, 0.5, 0.0916519, 2.95681, 40.9173, -5.18484)
+
+[node name="Pill1" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.164095, -0.472306, -0.866025, 0.944611, -0.328191, -2.18334e-07, -0.284221, -0.818057, 0.5, 3.2851, 45.8653, -0.334991)
+
+[node name="Pill5" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("18_eevry")]
+transform = Transform3D(0.334591, -0.371549, -0.866026, 0.743098, 0.669183, 1.44963e-08, 0.579529, -0.643541, 0.5, -1.37306, 65.4313, -8.40305)
+
+[node name="Pill6" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("18_eevry")]
+transform = Transform3D(0.499088, 0.0301845, -0.866025, -0.0603693, 0.998175, 4.36001e-08, 0.864446, 0.0522813, 0.5, 1.20433, 31.0822, -3.93884)
+
+[node name="Pill7" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.460545, 0.872206, -0.164789, 0.389349, 0.0316637, -0.920546, -0.797687, -0.488113, -0.354175, -0.718781, 49.716, -11.504)
+
+[node name="Pill8" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.455626, 0.858434, 0.235573, -0.411848, 0.0313256, -0.910714, -0.789168, -0.511965, 0.339272, 9.5309, 57.5741, 6.24905)
+
+[node name="Pill9" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle5" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(0.206703, 0.881164, -0.425233, 0.910547, -0.0142113, 0.413162, 0.358021, -0.472597, -0.805278, 7.93367, 37.3679, 3.48267)
+
+[node name="PillBottle6" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-0.000482963, -0.000258819, -0.000836516, -0.000866025, -4.37114e-11, 0.0005, -0.00012941, 0.000965926, -0.000224144, 0.33, 0.0292937, 0.31)
+
+[node name="Pill10" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(0.177195, -0.866025, -0.467549, -0.935098, -1.5025e-08, -0.354389, 0.30691, 0.5, -0.809819, 8.94356, 46.3398, 5.18436)
+
+[node name="Pill11" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(0.43002, -0.866025, -0.255114, -0.510228, -2.20856e-07, -0.860039, 0.744816, 0.5, -0.44187, -1.6682, 39.7377, -13.1957)
+
+[node name="Pill12" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("17_pfd7v")]
+transform = Transform3D(-0.396171, -0.866025, -0.305038, -0.610076, -7.77727e-08, 0.792343, -0.686189, 0.5, -0.528341, 6.46548, 32.3988, 0.892212)
+
+[node name="Pill13" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.444824, -0.228324, -0.866025, 0.456648, -0.889647, -2.41436e-07, -0.770457, -0.395468, 0.5, 4.48164, 38.9914, 1.73743)
+
+[node name="Pill14" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.0145368, -0.499789, -0.866025, 0.999577, -0.0290726, -1.1695e-07, -0.0251778, -0.865659, 0.5, -5.64288, 46.7112, -15.7986)
+
+[node name="Pill15" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("18_eevry")]
+transform = Transform3D(0.381847, -0.322789, -0.866025, 0.645577, 0.763694, -1.00875e-07, 0.661378, -0.559086, 0.5, 8.08046, 25.4249, 7.97089)
+
+[node name="Pill16" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.467549, 0.859422, 0.206861, -0.354389, 0.0321453, -0.934545, -0.809819, -0.510255, 0.28954, 0.763306, 33.7154, -8.93695)
+
+[node name="Pill17" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.187376, 0.849578, 0.493059, -0.927124, 0.0128829, -0.374531, -0.324545, -0.527306, 0.785251, 5.46422, 53.5542, -0.794708)
+
+[node name="Pill18" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle6" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(-0.164854, 0.88174, -0.441992, 0.944083, 0.0113341, -0.329512, -0.285535, -0.471599, -0.834305, 11.2851, 36.7329, 9.28748)
+
+[node name="PillBottle7" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.45, 0.0231813, 0.25)
+
+[node name="PillBottle8" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(0.000258819, 0, -0.000965926, 0, 0.001, 0, 0.000965926, 0, 0.000258819, 0.06, 0.0231813, 0.16)
+
+[node name="PillBottle9" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(0.000707107, 0, -0.000707107, 0, 0.001, 0, 0.000707107, 0, 0.000707107, 0.15, 0.0231813, 0.14)
+
+[node name="PillBottle10" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-0.000965926, 0, -0.000258819, 0, 0.001, 0, 0.000258819, 0, -0.000965926, 0.45, 0.0231813, 0.11)
+
+[node name="PillBottle11" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-0.000965926, 0, -0.000258819, 0, 0.001, 0, 0.000258819, 0, -0.000965926, 0.3, 0.0231813, 0.15)
+
+[node name="PillBottle12" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-5.82077e-11, 0, -0.001, 0, 0.001, 0, 0.001, 0, -5.82077e-11, 0.16, 0.0231813, 0.34)
+
+[node name="PillBottle13" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-5.82077e-11, 0, -0.001, 0, 0.001, 0, 0.001, 0, -5.82077e-11, 0.34, 0.175978, 0.03)
+
+[node name="PillBottle14" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(-5.82077e-11, 0, -0.001, 0, 0.001, 0, 0.001, 0, -5.82077e-11, 0.19, 0.175978, 0.03)
+
+[node name="PillBottle15" parent="Level/Foundation/Furniture/Trash_Pills" instance=ExtResource("17_5xaqf")]
+transform = Transform3D(0.000258819, -0.000965926, 2.71567e-11, -5.82077e-11, -4.37114e-11, -0.001, 0.000965926, 0.000258819, -6.75376e-11, 0.36, 0.181522, 0.11)
+
+[node name="Pill1" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle15" instance=ExtResource("18_eevry")]
+transform = Transform3D(0.9507, 0.310113, -1.06858e-08, -0.310113, 0.9507, 2.0206e-08, 1.64251e-08, -1.58959e-08, 1, 2.29343, 40.3211, 4.50969)
+
+[node name="Pill2" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle15" instance=ExtResource("18_eevry")]
+transform = Transform3D(0.965164, -0.26165, 1.34649e-08, 0.26165, 0.965164, -1.37072e-08, -9.40926e-09, 1.67529e-08, 1, 11.0547, 35.8102, 3.55501)
+
+[node name="Pill5" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle15" instance=ExtResource("18_eevry")]
+transform = Transform3D(-0.833973, -0.551807, 1.30872e-07, 0.551807, -0.833973, 4.80462e-08, 8.26312e-08, 1.12285e-07, 1, 10.6506, 27.4088, 3.55493)
+
+[node name="Pill3" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle15" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(1, -1.42109e-14, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.6648, 44.5457, 4.51909)
+
+[node name="Pill4" parent="Level/Foundation/Furniture/Trash_Pills/PillBottle15" instance=ExtResource("19_3bl7n")]
+transform = Transform3D(0.909693, -5.25657e-09, -0.415281, 0.415281, -1.95389e-08, 0.909694, -1.28959e-08, -1, -1.55915e-08, 0.298096, 33.1558, 4.51903)
+
+[node name="NewsPaper" type="MeshInstance3D" parent="Level/Foundation/Furniture"]
+transform = Transform3D(0.977335, -0.2117, -3.6574e-08, 3.06774e-08, -3.11381e-08, 1, -0.2117, -0.977335, -2.39379e-08, 0.282651, 0.02408, 0.224229)
+material_override = SubResource("StandardMaterial3D_10sbx")
+mesh = SubResource("QuadMesh_hyf6k")
+
+[node name="Camera1" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.281858, 0.0783114, 0.221755)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera1"]
+libraries = {
+"": SubResource("AnimationLibrary_1st0g")
+}
+
+[node name="Camera2" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.493942, 0, 0.869495, 0, 1, 0, -0.869495, 0, 0.493942, 0.586, 0.064, 0.424)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/CenterContainer"]
+layout_mode = 2
+text = "Ending 1 of 2."
+label_settings = SubResource("LabelSettings_o4gtl")
+
+[node name="LabelAnimationPlayer" type="AnimationPlayer" parent="UI/CenterContainer/Label"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ldqte")
+}
+
+[connection signal="animation_finished" from="Camera1/AnimationPlayer" to="." method="AnimationFinished"]

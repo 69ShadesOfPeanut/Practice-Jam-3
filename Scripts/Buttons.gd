@@ -6,6 +6,7 @@ extends HBoxContainer
 # Stats
 var GoodScore : int
 var BadScore : int
+var EndingBool : bool = false
 # Resources
 const OFFICE_DOOR_CLOSE_001 = preload("res://Sounds/Office Door Close-001.wav")
 const OFFICE_DOOR_OPEN_003 = preload("res://Sounds/Office Door Open-003.wav")
@@ -28,6 +29,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var CreepyPainting : MeshInstance3D = get_node("%CreepyPainting")
 @onready var ScreenTextureRect : TextureRect = ScreenNode.get_node("%TextureRect")
 @onready var FamilyPhoto : MeshInstance3D = get_node("%FamilyPhoto")
+@onready var PhoneLight : OmniLight3D = get_node("%PhoneLight")
 
 
 # Sets the first question into motion
@@ -64,6 +66,10 @@ func ButtonPress(Result):
 	
 	# Check question for events
 	await QuestionCheck(Result)
+	
+	if EndingBool == true:
+		print("Ending started")
+		return
 	
 	CurrentQuestion += 1
 	NextQuestion()
@@ -182,6 +188,25 @@ func QuestionCheck(Result):
 				await get_tree().create_timer(1).timeout
 				ScreenText.set_text("Your personal hell")
 				await get_tree().create_timer(0.3).timeout
+		29:
+			print("Question 29 event triggered")
+			if Result == "No":
+				ScreenText.set_text("...")
+				await get_tree().create_timer(1).timeout
+				ScreenText.set_text("Too bad")
+				await get_tree().create_timer(1).timeout
+				ScreenText.set_text("It's time to remember.")
+				await get_tree().create_timer(2).timeout
+			ScreenText.set_text("...")
+			await get_tree().create_timer(2).timeout
+			SoundSystem.PlaySound(SwitchOff)
+			hide()
+			CeilingLight.hide()
+			PhoneLight.hide()
+			
+			EndingBool = true
+			await get_tree().create_timer(2).timeout
+			Ending()
 
 
 # Question 10 prechoice event
@@ -191,3 +216,12 @@ func Question10Event():
 	FamilyPhoto.show()
 	Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
 	Audio3D.play()
+
+
+# Script for handling the ending
+func Ending():
+	if GoodScore > BadScore:
+		print("Good ending")
+	else:
+		print("Bad ending")
+		get_tree().change_scene_to_file("res://Scenes/Endings/BadEnding.tscn")

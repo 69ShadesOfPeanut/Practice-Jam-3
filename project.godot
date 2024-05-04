@@ -22,6 +22,10 @@ SoundSystem="*res://Autoloads/SoundSystem.gd"
 SFX="*res://Autoloads/SFX.tscn"
 Ambience="*res://Autoloads/Ambience.tscn"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 LeftClick={
