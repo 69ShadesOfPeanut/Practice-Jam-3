@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=29 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
 [ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 [ext_resource type="PackedScene" uid="uid://bqc5r1klgcrur" path="res://Imports/Phone.glb" id="12_j38xv"]
+[ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -156,6 +157,11 @@ transform = Transform3D(1, -3.72529e-09, 0, 0, 0.992546, 0.121869, 0, -0.121869,
 visible = false
 material_override = SubResource("StandardMaterial3D_lh0nb")
 mesh = SubResource("QuadMesh_7qj0i")
+
+[node name="PillBottle" parent="Level/Objects/table" instance=ExtResource("18_6hc8k")]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, 0.441185, 1.57862, -1.42671)
+visible = false
 
 [node name="Painting" parent="Level/Objects" instance=ExtResource("7_5njab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923331, 0.665505, -2.48935)

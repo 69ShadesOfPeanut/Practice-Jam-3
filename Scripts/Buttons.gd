@@ -30,6 +30,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var ScreenTextureRect : TextureRect = ScreenNode.get_node("%TextureRect")
 @onready var FamilyPhoto : MeshInstance3D = get_node("%FamilyPhoto")
 @onready var PhoneLight : OmniLight3D = get_node("%PhoneLight")
+@onready var PillBottle : Node3D = get_node("%PillBottle")
 
 
 # Sets the first question into motion
@@ -166,6 +167,7 @@ func QuestionCheck(Result):
 			SoundSystem.PlaySound(SwitchOff)
 			hide()
 			CeilingLight.hide()
+			PillBottle.show()
 			await get_tree().create_timer(0.7).timeout
 			Audio3D.set_stream(OFFICE_DOOR_OPEN_003)
 			Audio3D.set_volume_db(10)
