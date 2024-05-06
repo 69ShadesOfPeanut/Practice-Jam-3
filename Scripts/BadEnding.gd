@@ -29,7 +29,7 @@ func _ready():
 	Ambience.set_stream(RAIN_ON_ROOF_FROM_INSIDE_1)
 	Ambience.play()
 	
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(7).timeout
 	CameraAnimationPlayer.play("Camera")
 	await get_tree().create_timer(4).timeout
 	SoundSystem.PlaySound(THUNDER_STRIKE)
