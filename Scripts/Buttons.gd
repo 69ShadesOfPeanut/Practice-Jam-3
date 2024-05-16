@@ -85,7 +85,7 @@ func NextQuestion():
 	ProgressBarNode.show()
 	while ProgressBarNode.value < 100:
 		randomize()
-		ProgressBarNode.value += randi_range(1, 10)
+		ProgressBarNode.value += randi_range(1.5, 10)
 		await get_tree().create_timer(randf_range(0.05, 1)).timeout
 	ProgressBarNode.hide()
 	ProgressBarNode.value = 0
