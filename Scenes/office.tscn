@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=40 format=3 uid="uid://dd5decral8i2o"]
 
+[ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
 [ext_resource type="Script" path="res://Scripts/Monitor.gd" id="3_4ocov"]
@@ -18,6 +19,10 @@
 [ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 [ext_resource type="PackedScene" uid="uid://bqc5r1klgcrur" path="res://Imports/Phone.glb" id="12_j38xv"]
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
+[ext_resource type="Script" path="res://Scripts/CameraSwapHandler.gd" id="20_x5m4n"]
+
+[sub_resource type="Environment" id="Environment_ce6u3"]
+background_energy_multiplier = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -26,12 +31,43 @@ albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
 material = SubResource("StandardMaterial3D_dhmp2")
 size = Vector3(5, 0.1, 5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_exqpp"]
+material = SubResource("StandardMaterial3D_dhmp2")
+size = Vector3(1, 0.1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_432ye"]
+albedo_color = Color(0.337255, 0.337255, 0.337255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ml1rd"]
+material = SubResource("StandardMaterial3D_432ye")
+size = Vector3(1, 0.1, 10)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykn4p"]
 albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6tcwe"]
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(5, 2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6kwef"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(2.5, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ni5hm"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tcjen"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_07kb5"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(10, 5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ykc6h"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(1, 5, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acmpr"]
 
@@ -55,6 +91,9 @@ size = Vector2(0.212, 0.3)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ce6u3")
+
 [node name="3DAudio" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407545, 0.857933, 2.28105)
@@ -75,14 +114,34 @@ omni_range = 5.73354
 mesh = SubResource("BoxMesh_iexhi")
 skeleton = NodePath("../..")
 
+[node name="Floor2" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.5)
+mesh = SubResource("BoxMesh_exqpp")
+skeleton = NodePath("../..")
+
+[node name="Roof" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.5)
+mesh = SubResource("BoxMesh_ml1rd")
+skeleton = NodePath("../..")
+
 [node name="Wall" type="MeshInstance3D" parent="Level/Foundation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.54216)
 mesh = SubResource("BoxMesh_6tcwe")
 skeleton = NodePath("../..")
 
 [node name="Wall2" type="MeshInstance3D" parent="Level/Foundation"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1, 2.45784)
-mesh = SubResource("BoxMesh_6tcwe")
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.71005, 1.5, 2.45784)
+mesh = SubResource("BoxMesh_6kwef")
+skeleton = NodePath("../..")
+
+[node name="Wall5" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.71091, 1.5, 2.45784)
+mesh = SubResource("BoxMesh_6kwef")
+skeleton = NodePath("../..")
+
+[node name="Wall6" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0299171, 2.56866, 2.45784)
+mesh = SubResource("BoxMesh_ni5hm")
 skeleton = NodePath("../..")
 
 [node name="Wall3" type="MeshInstance3D" parent="Level/Foundation"]
@@ -90,9 +149,24 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5364
 mesh = SubResource("BoxMesh_6tcwe")
 skeleton = NodePath("../..")
 
+[node name="Wall7" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.53648, 2.5, 7.43853)
+mesh = SubResource("BoxMesh_tcjen")
+skeleton = NodePath("../..")
+
+[node name="Wall8" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.516398, 2.5, 7.43853)
+mesh = SubResource("BoxMesh_07kb5")
+skeleton = NodePath("../..")
+
 [node name="Wall4" type="MeshInstance3D" parent="Level/Foundation"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.46352, 1, -0.0614709)
 mesh = SubResource("BoxMesh_6tcwe")
+skeleton = NodePath("../..")
+
+[node name="Wall9" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0364794, 2.5, 12.4385)
+mesh = SubResource("BoxMesh_ykc6h")
 skeleton = NodePath("../..")
 
 [node name="Objects" type="Node3D" parent="Level"]
@@ -101,7 +175,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -0.0435683, -2.38419e-07, -1.84724)
 
 [node name="Monitor" parent="Level/Objects/table" instance=ExtResource("2_h68b3")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.136441, 1.47197, -0.108921)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.136442, 1.47197, -0.108921)
 script = ExtResource("3_4ocov")
 
 [node name="Screen" type="MeshInstance3D" parent="Level/Objects/table/Monitor"]
@@ -173,7 +247,12 @@ visible = false
 material_override = SubResource("StandardMaterial3D_i5v1c")
 mesh = SubResource("QuadMesh_qg8wr")
 
+[node name="Door" parent="Level/Objects" instance=ExtResource("1_2efrd")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.42876, 0.0359772, 2.45721)
+
 [node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,6 +290,12 @@ text = "No"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, -1.08096)
+current = true
+script = ExtResource("20_x5m4n")
+
+[node name="DoorCam" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 3.85159e-08, 0.903055, 0.592673)
 
 [connection signal="pressed" from="UI/Buttons/Button" to="UI/Buttons" method="ButtonPress" binds= ["Yes"]]
 [connection signal="pressed" from="UI/Buttons/Button2" to="UI/Buttons" method="ButtonPress" binds= ["No"]]

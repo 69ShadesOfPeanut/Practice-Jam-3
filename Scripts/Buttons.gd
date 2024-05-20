@@ -31,6 +31,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var FamilyPhoto : MeshInstance3D = get_node("%FamilyPhoto")
 @onready var PhoneLight : OmniLight3D = get_node("%PhoneLight")
 @onready var PillBottle : Node3D = get_node("%PillBottle")
+@onready var Door : Node3D = get_node("%Door")
 
 
 # Sets the first question into motion
@@ -219,6 +220,9 @@ func Question10Event():
 	FamilyPhoto.show()
 	Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
 	Audio3D.play()
+	
+	# Open door
+	Door.set_global_rotation_degrees(Vector3(0, -60, 0))
 
 
 # Script for handling the ending
