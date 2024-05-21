@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=43 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
@@ -23,6 +23,8 @@
 
 [sub_resource type="Environment" id="Environment_ce6u3"]
 background_energy_multiplier = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhmp2"]
 albedo_color = Color(0.205117, 0.205117, 0.205117, 1)
@@ -85,6 +87,18 @@ albedo_texture = ExtResource("9_ql82j")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qg8wr"]
 size = Vector2(0.212, 0.3)
+
+[sub_resource type="FogMaterial" id="FogMaterial_v3yjs"]
+albedo = Color(0.230315, 0.230315, 0.230315, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ffut"]
+albedo_color = Color(0.919281, 4.47616e-06, 1.15514e-06, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.33
+
+[sub_resource type="SphereMesh" id="SphereMesh_rcoas"]
+material = SubResource("StandardMaterial3D_1ffut")
 
 [node name="Office" type="Node"]
 
@@ -250,6 +264,26 @@ mesh = SubResource("QuadMesh_qg8wr")
 [node name="Door" parent="Level/Objects" instance=ExtResource("1_2efrd")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.42876, 0.0359772, 2.45721)
+
+[node name="FogVolume" type="FogVolume" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6973, 7.44698)
+size = Vector3(2, 3.39179, 10.0524)
+material = SubResource("FogMaterial_v3yjs")
+
+[node name="Eyes" type="Node3D" parent="Level"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.230009, 1, 6.43576)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Eyes"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_rcoas")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level/Eyes"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.2, 0, 0)
+mesh = SubResource("SphereMesh_rcoas")
+skeleton = NodePath("../..")
 
 [node name="UI" type="Control" parent="."]
 unique_name_in_owner = true

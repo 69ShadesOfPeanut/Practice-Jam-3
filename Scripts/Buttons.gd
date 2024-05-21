@@ -32,6 +32,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var PhoneLight : OmniLight3D = get_node("%PhoneLight")
 @onready var PillBottle : Node3D = get_node("%PillBottle")
 @onready var Door : Node3D = get_node("%Door")
+@onready var Eyes : Node3D = get_node("%Eyes")
 
 
 # Sets the first question into motion
@@ -148,6 +149,7 @@ func QuestionCheck(Result):
 			ScreenTextureRect.hide()
 		15:
 			print("Question 15 event triggered")
+			Door.set_global_rotation_degrees(Vector3(0, -180, 0))
 			if Result == "No":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(1).timeout
@@ -174,6 +176,8 @@ func QuestionCheck(Result):
 			Audio3D.set_stream(OFFICE_DOOR_OPEN_003)
 			Audio3D.set_volume_db(10)
 			Audio3D.play()
+			Eyes.show()
+			Door.set_global_rotation_degrees(Vector3(0, -60, 0))
 			await get_tree().create_timer(1.5).timeout
 			Audio3D.set_stream(MONSTER_BREATHING_SLOWLY_1)
 			Audio3D.set_volume_db(3)
@@ -183,6 +187,7 @@ func QuestionCheck(Result):
 			await get_tree().create_timer(12).timeout
 			SoundSystem.StopSound()
 			Audio3D.stop()
+			Eyes.hide()
 			show()
 			CeilingLight.show()
 		26:
