@@ -50,8 +50,6 @@ func ButtonPress(Result):
 		if Result == "No":
 			ScreenText.set_text("You have no free will")
 			await get_tree().create_timer(0.2).timeout
-	elif  CurrentQuestion == 10:
-		await Question10Event()
 	else:
 		if Result == "Yes":
 			GoodScore += 1
@@ -120,6 +118,16 @@ func QuestionCheck(Result):
 			CreepyPainting.hide()
 		10:
 			print("Question 10 event triggered")
+			
+			await get_tree().create_timer(1).timeout
+			FamilyPhoto.show()
+			Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
+			Audio3D.play()
+			
+			# Open door
+			Door.set_global_rotation_degrees(Vector3(0, -60, 0))
+			
+			
 			if Result == "No":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(2).timeout
@@ -216,18 +224,6 @@ func QuestionCheck(Result):
 			EndingBool = true
 			await get_tree().create_timer(2).timeout
 			Ending()
-
-
-# Question 10 prechoice event
-func Question10Event():
-	print("Question 10 prechoice event")
-	await get_tree().create_timer(1).timeout
-	FamilyPhoto.show()
-	Audio3D.set_stream(OFFICE_DOOR_CLOSE_001)
-	Audio3D.play()
-	
-	# Open door
-	Door.set_global_rotation_degrees(Vector3(0, -60, 0))
 
 
 # Script for handling the ending
