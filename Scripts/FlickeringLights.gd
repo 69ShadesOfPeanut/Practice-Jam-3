@@ -1,5 +1,5 @@
 # Script to make lights flicker
-extends OmniLight3D
+extends Light3D
 
 # Vars
 @export var MinTime : float

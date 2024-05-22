@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=44 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
 [ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 [ext_resource type="PackedScene" uid="uid://bqc5r1klgcrur" path="res://Imports/Phone.glb" id="12_j38xv"]
+[ext_resource type="Script" path="res://Scripts/FlickeringLights.gd" id="16_txpqj"]
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
 [ext_resource type="Script" path="res://Scripts/CameraSwapHandler.gd" id="20_x5m4n"]
 
@@ -263,7 +264,7 @@ mesh = SubResource("QuadMesh_qg8wr")
 
 [node name="Door" parent="Level/Objects" instance=ExtResource("1_2efrd")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.42876, 0.0359772, 2.45721)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.42876, 0.0359772, 2.45721)
 
 [node name="FogVolume" type="FogVolume" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6973, 7.44698)
@@ -284,6 +285,18 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.2, 0, 0)
 mesh = SubResource("SphereMesh_rcoas")
 skeleton = NodePath("../..")
+
+[node name="HallwayLight" type="SpotLight3D" parent="Level"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.443, 5.842)
+light_color = Color(0.912289, 0.912289, 0.912289, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 3.963
+spot_range = 8.29155
+spot_angle = 24.3608
+script = ExtResource("16_txpqj")
+MinTime = 0.2
+MaxTime = 2.0
 
 [node name="UI" type="Control" parent="."]
 unique_name_in_owner = true
