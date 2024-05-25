@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=49 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" path="res://Scripts/FlickeringLights.gd" id="16_txpqj"]
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
 [ext_resource type="Script" path="res://Scripts/CameraSwapHandler.gd" id="20_x5m4n"]
+[ext_resource type="PackedScene" uid="uid://7wkfywkp5pgd" path="res://Imports/WheelChair.glb" id="23_hnrqd"]
+[ext_resource type="PackedScene" uid="uid://w1e8wsr1880m" path="res://Imports/IVStand.glb" id="24_veeod"]
 
 [sub_resource type="Environment" id="Environment_ce6u3"]
 background_energy_multiplier = 0.0
@@ -278,6 +280,16 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.428
 
 [node name="Clock" parent="Level/Objects" instance=ExtResource("16_rerbj")]
 transform = Transform3D(-100, 0, -8.74228e-06, 0, 100, 0, 8.74228e-06, 0, -100, 1.22683, 1.7926, 2.39727)
+
+[node name="HospitalEquipment" type="Node3D" parent="Level/Objects"]
+unique_name_in_owner = true
+visible = false
+
+[node name="WheelChair" parent="Level/Objects/HospitalEquipment" instance=ExtResource("23_hnrqd")]
+transform = Transform3D(-15, 0, 25.9808, 0, 30, 0, -25.9808, 0, -15, -1.35175, 0.0542611, 2.11819)
+
+[node name="IVStand" parent="Level/Objects/HospitalEquipment" instance=ExtResource("24_veeod")]
+transform = Transform3D(-26.3735, 0, 14.2982, 0, 30, 0, -14.2982, 0, -26.3735, -0.854482, 0.0487446, 2.20092)
 
 [node name="FogVolume" type="FogVolume" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6973, 7.44698)

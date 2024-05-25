@@ -33,6 +33,7 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var PillBottle : Node3D = get_node("%PillBottle")
 @onready var Door : Node3D = get_node("%Door")
 @onready var Eyes : Node3D = get_node("%Eyes")
+@onready var HospitalEquipment : Node3D = get_node("%HospitalEquipment")
 
 
 # Sets the first question into motion
@@ -141,6 +142,8 @@ func QuestionCheck(Result):
 			await get_tree().create_timer(2).timeout
 			ScreenText.set_text("Are you sure?")
 			await get_tree().create_timer(0.3).timeout
+			
+			HospitalEquipment.show()
 		13:
 			print("Question 13 event triggered")
 			if Result == "Yes":
