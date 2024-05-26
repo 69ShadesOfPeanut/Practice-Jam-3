@@ -3,6 +3,7 @@ extends HBoxContainer
 
 # Vars
 @export var CurrentQuestion : int = 0
+var State
 # Stats
 var GoodScore : int
 var BadScore : int
@@ -34,11 +35,17 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var Door : Node3D = get_node("%Door")
 @onready var Eyes : Node3D = get_node("%Eyes")
 @onready var HospitalEquipment : Node3D = get_node("%HospitalEquipment")
+@onready var HTTPRequestNode : HTTPRequest = get_node("HTTPRequest")
 
 
 # Sets the first question into motion
 func _ready():
 	ScreenText.set_text(Questions[CurrentQuestion])
+	
+	# Send HTTP request to get ip location
+	var IpAddresses = IP.get_local_addresses()
+	var IpV6 = IpAddresses[4]
+	HTTPRequestNode.request("http://ip-api.com/json/" + str(IpV6))
 
 
 # Gets button press, adds good or bad score depending on result
@@ -91,7 +98,16 @@ func NextQuestion():
 	ProgressBarNode.hide()
 	ProgressBarNode.value = 0
 	
-	ScreenText.set_text(Questions[CurrentQuestion])
+	# Check question and assign text
+	match CurrentQuestion:
+		14:
+			if State == null:
+				print("State not found")
+				ScreenText.set_text(Questions[CurrentQuestion])
+				return
+			ScreenText.set_text("Do you like it in " + State + "?")
+		_:
+			ScreenText.set_text(Questions[CurrentQuestion])
 	
 	Button1.disabled = false
 	Button2.disabled = false
@@ -151,14 +167,14 @@ func QuestionCheck(Result):
 				await get_tree().create_timer(2).timeout
 				ScreenText.set_text("Check it.")
 				await get_tree().create_timer(0.3).timeout
-		14:
+		15:
 			print("Question 14 event triggered")
 			ScreenText.set_text("...")
 			await get_tree().create_timer(1).timeout
 			ScreenTextureRect.show()
 			await get_tree().create_timer(1).timeout
 			ScreenTextureRect.hide()
-		15:
+		16:
 			print("Question 15 event triggered")
 			Door.set_global_rotation_degrees(Vector3(0, -180, 0))
 			if Result == "No":
@@ -166,14 +182,14 @@ func QuestionCheck(Result):
 				await get_tree().create_timer(1).timeout
 				ScreenText.set_text("Don't lie.")
 				await get_tree().create_timer(0.3).timeout
-		17:
+		18:
 			print("Question 17 event triggered")
 			if Result == "No":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(1).timeout
 				ScreenText.set_text("Check again.")
 				await get_tree().create_timer(0.3).timeout
-		22:
+		23:
 			print("Question 22 event triggered")
 			ScreenText.set_text("...")
 			await get_tree().create_timer(1).timeout
@@ -201,14 +217,14 @@ func QuestionCheck(Result):
 			Eyes.hide()
 			show()
 			CeilingLight.show()
-		26:
+		27:
 			print("Question 26 event triggered")
 			if Result == "No":
 				ScreenText.set_text("...")
 				await get_tree().create_timer(1).timeout
 				ScreenText.set_text("Your personal hell")
 				await get_tree().create_timer(0.3).timeout
-		29:
+		30:
 			print("Question 29 event triggered")
 			if Result == "No":
 				ScreenText.set_text("...")
@@ -239,3 +255,18 @@ func Ending():
 		print("Bad ending")
 		GlobalVars.Ending = "Bad"
 		get_tree().change_scene_to_file("res://Scenes/Endings/BadEnding.tscn")
+
+
+# On http request complete, save location
+func HttpRequestComplete(result, response_code, headers, body):
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var Response = json.get_data()
+	
+	# If the API request failed, return
+	if Response == null or Response["status"] == "fail":
+		print("IP lookup failed")
+		return
+	
+	State = Response["regionName"]
+	print("Player lives in: " + State)

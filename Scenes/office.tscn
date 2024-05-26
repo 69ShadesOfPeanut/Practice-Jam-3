@@ -347,10 +347,11 @@ offset_top = -53.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("7_u6eov")
+CurrentQuestion = 13
 ButtonClickSound = ExtResource("9_a0b7e")
 KnockingSound = ExtResource("10_ilr6g")
 SwitchOff = ExtResource("11_24fp6")
-Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?", "Is your phone nearby?", "A person is going to flash on screen. Take note of his appearance. Are you ready?", "Did he remind you of someone?", "Did he look normal to you?", "Is he the person standing behind you?", "This concludes questions regarding the person. Are you ready to continue?", "Have you enjoyed this survey so far?", "Would you recommend this survey to friends?", "One final question...", "Are you alone?", "That was her, answer the phone.", "Do you remember the last thing she said to you?", "Do you remember what happened to you?", "Do you truly know where you are?", "Do you remember anything?", "Do you know who you are?", "Do you want to remember?")
+Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?", "Is your phone nearby?", "Do you like it where you live?", "A person is going to flash on screen. Take note of his appearance. Are you ready?", "Did he remind you of someone?", "Did he look normal to you?", "Is he the person standing behind you?", "This concludes questions regarding the person. Are you ready to continue?", "Have you enjoyed this survey so far?", "Would you recommend this survey to friends?", "One final question...", "Are you alone?", "That was her, answer the phone.", "Do you remember the last thing she said to you?", "Do you remember what happened to you?", "Do you truly know where you are?", "Do you remember anything?", "Do you know who you are?", "Do you want to remember?")
 
 [node name="Button" type="Button" parent="UI/Buttons"]
 layout_mode = 2
@@ -364,6 +365,8 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 text = "No"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="UI/Buttons"]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.905878, -1.08096)
 current = true
@@ -375,3 +378,4 @@ transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 3.85159e
 
 [connection signal="pressed" from="UI/Buttons/Button" to="UI/Buttons" method="ButtonPress" binds= ["Yes"]]
 [connection signal="pressed" from="UI/Buttons/Button2" to="UI/Buttons" method="ButtonPress" binds= ["No"]]
+[connection signal="request_completed" from="UI/Buttons/HTTPRequest" to="UI/Buttons" method="HttpRequestComplete"]
