@@ -14,10 +14,10 @@ const OFFICE_DOOR_OPEN_003 = preload("res://Sounds/Office Door Open-003.wav")
 const MONSTER_BREATHING_SLOWLY_1 = preload("res://Sounds/monster_breathing_slowly_1.wav")
 const TELEPHONE = preload("res://Sounds/telephone.mp3")
 const PERSON = preload("res://Textures/Person.PNG")
+const ButtonClickSound = preload("res://Sounds/click.ogg")
+const KnockingSound = preload("res://Sounds/knocking-at-the-door-ii.ogg")
+const SwitchOff = preload("res://Sounds/oldwallswitchoff.wav")
 # Exports
-@export var ButtonClickSound : Resource
-@export var KnockingSound : Resource
-@export var SwitchOff : Resource
 @export var Questions : PackedStringArray
 # Nodes
 @onready var ScreenNode : Node3D = get_node("%Screen")

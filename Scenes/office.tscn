@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=43 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
@@ -11,11 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
 [ext_resource type="Script" path="res://Scripts/Buttons.gd" id="7_u6eov"]
 [ext_resource type="PackedScene" uid="uid://bc7lrpbsumwyc" path="res://Imports/PhotoFrame.glb" id="8_7enif"]
-[ext_resource type="AudioStream" uid="uid://cu2ddvrp81r4r" path="res://Sounds/click.ogg" id="9_a0b7e"]
 [ext_resource type="Texture2D" uid="uid://dfssj4pquqpdn" path="res://Textures/CreepyPainting.png" id="9_ql82j"]
 [ext_resource type="Texture2D" uid="uid://dryoac1s5dx58" path="res://Textures/FamilyPhoto.png" id="9_tf8sw"]
-[ext_resource type="AudioStream" uid="uid://dqmnwkw448xc1" path="res://Sounds/knocking-at-the-door-ii.ogg" id="10_ilr6g"]
-[ext_resource type="AudioStream" uid="uid://befasjsqlr4hd" path="res://Sounds/oldwallswitchoff.wav" id="11_24fp6"]
 [ext_resource type="PackedScene" uid="uid://bqc5r1klgcrur" path="res://Imports/Phone.glb" id="12_j38xv"]
 [ext_resource type="PackedScene" uid="uid://x7pxnn5ykrnx" path="res://Scenes/Objects/clock.tscn" id="16_rerbj"]
 [ext_resource type="Script" path="res://Scripts/FlickeringLights.gd" id="16_txpqj"]
@@ -111,9 +108,6 @@ height = 0.959
 
 [node name="Buttons" type="Node" parent="."]
 script = ExtResource("7_u6eov")
-ButtonClickSound = ExtResource("9_a0b7e")
-KnockingSound = ExtResource("10_ilr6g")
-SwitchOff = ExtResource("11_24fp6")
 Questions = PackedStringArray("Thank you for signing up to our survey! Would you like to start? (Answering the survey in fullscreen is recommended)", "Are you happy today?", "Are you happy with your life?", "Are you happy with your living situation?", "Are you alert?", "Are you satisfied with your job?", "Do you fall asleep easily?", "Do you eat breakfast?", "Do you have close friends?", "Are you aware of where you are?", "Do you recognise the person behind you?", "Would you notice if something changed?", "Are you safe?", "Is your phone nearby?", "Do you like it where you live?", "A person is going to flash on screen. Take note of his appearance. Are you ready?", "Did he remind you of someone?", "Did he look normal to you?", "Is he the person standing behind you?", "This concludes questions regarding the person. Are you ready to continue?", "Have you enjoyed this survey so far?", "Would you recommend this survey to friends?", "One final question...", "Are you alone?", "That was her, answer the phone.", "Do you remember the last thing she said to you?", "Do you remember what happened to you?", "Do you truly know where you are?", "Do you remember anything?", "Do you know who you are?", "Do you want to remember?")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="Buttons"]
