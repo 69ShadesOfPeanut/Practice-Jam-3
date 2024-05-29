@@ -1,57 +1,138 @@
-[gd_scene load_steps=3 format=3 uid="uid://cboulabfu8lq6"]
+[gd_scene load_steps=12 format=3 uid="uid://cboulabfu8lq6"]
 
+[ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_tb1gk"]
 [ext_resource type="Texture2D" uid="uid://cofmvdfjpbugm" path="res://Textures/Person.PNG" id="1_vv770"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d13bl"]
 font_size = 64
 
-[node name="Screen" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dysy"]
+bg_color = Color(0.581033, 0.581033, 0.581033, 1)
 
-[node name="Background" type="ColorRect" parent="."]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68pos"]
+bg_color = Color(0.404511, 0.404511, 0.404511, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wo3rf"]
+bg_color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="Theme" id="Theme_40w3r"]
+Button/styles/hover = SubResource("StyleBoxFlat_2dysy")
+Button/styles/normal = SubResource("StyleBoxFlat_68pos")
+Button/styles/pressed = SubResource("StyleBoxFlat_wo3rf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ytha"]
+size = Vector2(0.65, 0.65)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ow5sp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygvkd"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_ow5sp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4hj28"]
+size = Vector3(0.65, 0.1, 0.65)
+
+[node name="Screen" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_tb1gk")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+gui_embed_subwindows = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GUI" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="SubViewport/GUI"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="ColorRect" parent="SubViewport/GUI/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0.223103, 0.223103, 0.223103, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="SubViewport/GUI/Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 1152.0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/GUI/Panel/CenterContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Text" type="Label" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1152, 0)
 layout_mode = 2
+text = "Placeholder text"
 label_settings = SubResource("LabelSettings_d13bl")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+[node name="Buttons" type="HBoxContainer" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_40w3r")
+theme_override_constants/separation = 30
+
+[node name="YesButton" type="Button" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "No"
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/GUI/Panel/CenterContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(700, 600)
 layout_mode = 2
 texture = ExtResource("1_vv770")
 expand_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("QuadMesh_0ytha")
+surface_material_override/0 = SubResource("StandardMaterial3D_ygvkd")
+
+[node name="Area3D" type="Area3D" parent="Screen"]
+unique_name_in_owner = true
+transform = Transform3D(1, 2.03288e-20, -6.77626e-21, 6.77626e-21, -4.37114e-08, 1, 2.03288e-20, -1, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Screen/Area3D"]
+transform = Transform3D(1, 6.77626e-21, 0, -6.77626e-21, 1, 3.55271e-15, 4.6852e-26, -3.55271e-15, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_4hj28")
+
+[connection signal="input_event" from="Screen/Area3D" to="." method="_mouse_input_event"]
+[connection signal="mouse_entered" from="Screen/Area3D" to="." method="MouseEnteredArea"]
+[connection signal="mouse_exited" from="Screen/Area3D" to="." method="MouseExitedArea"]

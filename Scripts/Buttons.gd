@@ -1,5 +1,5 @@
 # Controls buttons
-extends HBoxContainer
+extends Node
 
 # Vars
 @export var CurrentQuestion : int = 0
@@ -20,10 +20,8 @@ const PERSON = preload("res://Textures/Person.PNG")
 @export var SwitchOff : Resource
 @export var Questions : PackedStringArray
 # Nodes
-@onready var ScreenNode : Control = get_node("%Screen")
+@onready var ScreenNode : Node3D = get_node("%Screen")
 @onready var ScreenText : Label = ScreenNode.get_node("%Text")
-@onready var Button1 : Button = get_node("Button")
-@onready var Button2 : Button = get_node("Button2")
 @onready var ProgressBarNode : ProgressBar = ScreenNode.get_node("%ProgressBar")
 @onready var CeilingLight : OmniLight3D = get_node("%CeilingLight")
 @onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
@@ -36,10 +34,17 @@ const PERSON = preload("res://Textures/Person.PNG")
 @onready var Eyes : Node3D = get_node("%Eyes")
 @onready var HospitalEquipment : Node3D = get_node("%HospitalEquipment")
 @onready var HTTPRequestNode : HTTPRequest = get_node("HTTPRequest")
+@onready var ButtonsContainer : HBoxContainer = ScreenNode.get_node("%Buttons")
+@onready var YesButton : Button = ButtonsContainer.get_node("YesButton")
+@onready var NoButton : Button = ButtonsContainer.get_node("NoButton")
 
 
-# Sets the first question into motion
 func _ready():
+	# Connect buttons up to functions
+	YesButton.pressed.connect(ButtonPress.bind("Yes"))
+	NoButton.pressed.connect(ButtonPress.bind("No"))
+	
+	# Sets the first question into motion
 	ScreenText.set_text(Questions[CurrentQuestion])
 	
 	# Send HTTP request to get ip location
@@ -48,6 +53,10 @@ func _ready():
 
 # Gets button press, adds good or bad score depending on result
 func ButtonPress(Result):
+	# Hide buttons
+	YesButton.hide()
+	NoButton.hide()
+	
 	print("Question answered")
 	SoundSystem.PlaySound(ButtonClickSound)
 	
@@ -67,9 +76,6 @@ func ButtonPress(Result):
 		print("Good score: " + str(GoodScore) + "\n"\
 		+ "Bad score: " + str(BadScore))
 	
-	# Buttons disabled
-	Button1.disabled = true
-	Button2.disabled = true
 	
 	# Check question for events
 	await QuestionCheck(Result)
@@ -107,8 +113,9 @@ func NextQuestion():
 		_:
 			ScreenText.set_text(Questions[CurrentQuestion])
 	
-	Button1.disabled = false
-	Button2.disabled = false
+	# Show buttons
+	YesButton.show()
+	NoButton.show()
 
 # Checks question for if there should be an event
 func QuestionCheck(Result):
@@ -121,12 +128,12 @@ func QuestionCheck(Result):
 			ScreenText.set_text("...")
 			await get_tree().create_timer(1.5).timeout
 			SoundSystem.PlaySound(SwitchOff)
-			hide()
+			YesButton.hide()
+			NoButton.hide()
 			CeilingLight.hide()
 			await get_tree().create_timer(5).timeout
 			SoundSystem.PlaySound(KnockingSound)
 			await get_tree().create_timer(3).timeout
-			show()
 			CeilingLight.show()
 			CreepyPainting.show()
 		5:
@@ -194,7 +201,8 @@ func QuestionCheck(Result):
 			ScreenText.set_text("You have been this whole time.")
 			await get_tree().create_timer(0.3).timeout
 			SoundSystem.PlaySound(SwitchOff)
-			hide()
+			YesButton.hide()
+			NoButton.hide()
 			CeilingLight.hide()
 			PillBottle.show()
 			await get_tree().create_timer(0.7).timeout
@@ -213,7 +221,6 @@ func QuestionCheck(Result):
 			SoundSystem.StopSound()
 			Audio3D.stop()
 			Eyes.hide()
-			show()
 			CeilingLight.show()
 		27:
 			print("Question 26 event triggered")
@@ -234,7 +241,8 @@ func QuestionCheck(Result):
 			ScreenText.set_text("...")
 			await get_tree().create_timer(2).timeout
 			SoundSystem.PlaySound(SwitchOff)
-			hide()
+			YesButton.hide()
+			NoButton.hide()
 			CeilingLight.hide()
 			PhoneLight.hide()
 			
