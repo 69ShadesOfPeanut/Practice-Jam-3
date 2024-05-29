@@ -43,9 +43,7 @@ func _ready():
 	ScreenText.set_text(Questions[CurrentQuestion])
 	
 	# Send HTTP request to get ip location
-	var IpAddresses = IP.get_local_addresses()
-	var IpV6 = IpAddresses[4]
-	HTTPRequestNode.request("http://ip-api.com/json/" + str(IpV6))
+	HTTPRequestNode.request("http://ip-api.com/json/")
 
 
 # Gets button press, adds good or bad score depending on result
