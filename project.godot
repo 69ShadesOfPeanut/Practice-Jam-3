@@ -23,6 +23,10 @@ SFX="*res://Autoloads/SFX.tscn"
 Ambience="*res://Autoloads/Ambience.tscn"
 GlobalVars="*res://Autoloads/GlobalVars.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [filesystem]
 
 import/fbx/enabled=false
