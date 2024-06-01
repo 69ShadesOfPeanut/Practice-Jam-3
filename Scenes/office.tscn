@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=44 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
+[ext_resource type="Script" path="res://Scripts/Office.gd" id="1_3dhej"]
 [ext_resource type="PackedScene" uid="uid://dembvtu0un560" path="res://Imports/table.glb" id="1_rbkf7"]
 [ext_resource type="PackedScene" uid="uid://d21ij155pnef2" path="res://Imports/Monitor.glb" id="2_h68b3"]
 [ext_resource type="PackedScene" uid="uid://k5lnrc1ttwc8" path="res://Imports/RubixCube.glb" id="3_faifh"]
@@ -105,6 +106,7 @@ radius = 0.2
 height = 0.959
 
 [node name="Office" type="Node"]
+script = ExtResource("1_3dhej")
 
 [node name="Buttons" type="Node" parent="."]
 script = ExtResource("7_u6eov")

@@ -1,0 +1,208 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmy7tlwmi470s"]
+
+[ext_resource type="Script" path="res://Scripts/ComputerSetup.gd" id="1_hab8i"]
+[ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_sr2mj"]
+
+[sub_resource type="Gradient" id="Gradient_e28mv"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6monu"]
+gradient = SubResource("Gradient_e28mv")
+fill_to = Vector2(0.534188, 1)
+
+[sub_resource type="Animation" id="Animation_tvqp5"]
+resource_name = "NoButtonDrop"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(86, 254), Vector2(137, 227), Vector2(365, 676)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.35964, 1.73087]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xx25l"]
+_data = {
+"NoButtonDrop": SubResource("Animation_tvqp5")
+}
+
+[node name="ComputerSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sr2mj")
+script = ExtResource("1_hab8i")
+Stages = PackedStringArray("Thank you for picking OS/3!\nWe would like to ask for a few minutes of your time to set up OS/3 to your liking.\nPlease press continue when ready.", "Enter the username of the account you wish to be associated with this computer.", "Are you willing to allow OS/3 to collect data to further improve OS/3 and our ability to supply support to you?", "This concludes our setup.\nPlease press continue to finalise the setup and start exploring what OS/3 has to offer!")
+Titles = PackedStringArray("Welcome to OS/3!", "Who is using this computer?", "Data collection", "Finalise setup")
+
+[node name="Background" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+color = Color(0.000151221, 3.44737e-06, 0.209407, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.227451, 0.45098, 1, 1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_6monu")
+
+[node name="ColorRect3" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+color = Color(0.000151221, 3.44737e-06, 0.209407, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OSName" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.011
+anchor_right = 0.01
+anchor_bottom = 0.011
+offset_left = 0.48
+offset_top = -0.128001
+offset_right = 96.48
+offset_bottom = 47.872
+theme_override_font_sizes/font_size = 64
+text = "OS/3"
+
+[node name="Title" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.142
+anchor_right = 0.327
+anchor_bottom = 0.216
+offset_left = -0.407997
+offset_top = -0.0160065
+offset_right = 0.295959
+offset_bottom = 0.0319977
+theme_override_font_sizes/font_size = 64
+text = "Welcome to OS/3!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.269
+anchor_right = 0.959
+anchor_bottom = 0.846
+offset_left = -0.400002
+offset_top = -0.312012
+offset_right = 0.231934
+offset_bottom = -0.208008
+theme_override_constants/separation = 20
+
+[node name="Instructions" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Placeholder Text"
+autowrap_mode = 2
+
+[node name="Inputs" type="Control" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer/Inputs"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = -1
+offset_right = 67.0625
+offset_bottom = 31.0
+max_length = 15
+
+[node name="Buttons" type="VBoxContainer" parent="Control/VBoxContainer/Inputs"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="YesButton" type="Button" parent="Control/VBoxContainer/Inputs/Buttons"]
+layout_mode = 2
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="Control/VBoxContainer/Inputs/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No"
+
+[node name="NoButtonDecoy" type="Button" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_left = 86.0
+offset_top = 254.0
+offset_right = 286.001
+offset_bottom = 286.0
+text = "No"
+
+[node name="NoButtonAnim" type="AnimationPlayer" parent="Control/NoButtonDecoy"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_xx25l")
+}
+
+[node name="Continue" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.985
+anchor_top = 0.978
+anchor_right = 0.985
+anchor_bottom = 0.978
+offset_left = -78.7201
+offset_top = -30.744
+offset_right = 0.279907
+offset_bottom = 0.255981
+grow_horizontal = 0
+grow_vertical = 0
+text = "Continue"
+
+[connection signal="pressed" from="Control/VBoxContainer/Inputs/Buttons/YesButton" to="." method="ContinuePressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Inputs/Buttons/NoButton" to="." method="NoButtonPressed"]
+[connection signal="pressed" from="Control/Continue" to="." method="ContinuePressed"]

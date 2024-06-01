@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://crsn8oneac34e"]
+
+[ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="1_1t7b4"]
+[ext_resource type="FontFile" uid="uid://b4udm80rjpaq0" path="res://Fonts/Kenney Mini.ttf" id="1_35ywh"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_1t7b4")
+Label/fonts/font = ExtResource("1_1t7b4")
+LineEdit/fonts/font = ExtResource("1_35ywh")
