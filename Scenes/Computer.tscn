@@ -1,4 +1,23 @@
-[gd_scene format=3 uid="uid://bw8l3d72ngjk4"]
+[gd_scene load_steps=12 format=3 uid="uid://bw8l3d72ngjk4"]
+
+[ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_7n36v"]
+[ext_resource type="Script" path="res://Scripts/Computer.gd" id="1_f2wnh"]
+[ext_resource type="PackedScene" uid="uid://duee8an8vv0ok" path="res://Scenes/DesktopIcon.tscn" id="1_lah70"]
+[ext_resource type="PackedScene" uid="uid://d3pops5sjgybj" path="res://Scenes/ComputerApps/Note.tscn" id="2_xtkj1"]
+[ext_resource type="Texture2D" uid="uid://bu0ul67gxtge1" path="res://Textures/Icons/NotepadIcon.png" id="3_aduot"]
+[ext_resource type="PackedScene" uid="uid://bj2r58u54eq0s" path="res://Scenes/ComputerApps/StartSurvey.tscn" id="4_hmbmb"]
+[ext_resource type="Texture2D" uid="uid://ntidw85l2efw" path="res://Textures/Icons/SurveyIcon.png" id="6_xf32m"]
+[ext_resource type="PackedScene" uid="uid://bbmcxvjsp55f6" path="res://Scenes/ComputerApps/Confidential.tscn" id="6_xr8gx"]
+[ext_resource type="Texture2D" uid="uid://c6crp7hpjsond" path="res://Textures/Icons/ImageIcon.png" id="7_33wps"]
+
+[sub_resource type="Gradient" id="Gradient_8ethe"]
+offsets = PackedFloat32Array(0, 0.172566, 0.376106, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.39823, 0.39823, 0.39823, 1, 0.443282, 0.443282, 0.443282, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v01y5"]
+gradient = SubResource("Gradient_8ethe")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
 
 [node name="Computer" type="Control"]
 layout_mode = 3
@@ -7,3 +26,99 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_7n36v")
+script = ExtResource("1_f2wnh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.149847, 0.58803, 0.395731, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_v01y5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 10
+color = Color(0.00406233, 0.166811, 0.753166, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 5.0
+color = Color(0.319562, 0.527315, 0.999986, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Date" type="Label" parent="VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "Placeholder date"
+
+[node name="Icons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Note" parent="Icons" instance=ExtResource("1_lah70")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 137.0
+offset_right = 160.0
+offset_bottom = 201.0
+Icon = ExtResource("3_aduot")
+IconName = "Note.txt"
+App = ExtResource("2_xtkj1")
+
+[node name="StartSurvey" parent="Icons" instance=ExtResource("1_lah70")]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 301.0
+offset_right = 179.0
+offset_bottom = 365.0
+Icon = ExtResource("6_xf32m")
+IconName = "Start Survey"
+App = ExtResource("4_hmbmb")
+
+[node name="Confidential" parent="Icons" instance=ExtResource("1_lah70")]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 463.0
+offset_right = 1029.0
+offset_bottom = 527.0
+Icon = ExtResource("7_33wps")
+IconName = "Confidential.png"
+App = ExtResource("6_xr8gx")
+
+[node name="OpenApps" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0

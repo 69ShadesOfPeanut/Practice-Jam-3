@@ -8,3 +8,6 @@ Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_1t7b4")
 Label/fonts/font = ExtResource("1_1t7b4")
 LineEdit/fonts/font = ExtResource("1_35ywh")
+TabBar/fonts/font = ExtResource("1_1t7b4")
+TextEdit/font_sizes/font_size = 32
+TextEdit/fonts/font = ExtResource("1_1t7b4")

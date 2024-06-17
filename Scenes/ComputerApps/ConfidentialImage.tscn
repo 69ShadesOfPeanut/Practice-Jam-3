@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://casari7jbwua3"]
+
+[ext_resource type="Script" path="res://Scripts/WindowNode.gd" id="1_hbsfr"]
+[ext_resource type="Texture2D" uid="uid://dhe5eqtc0o6s6" path="res://icon.svg" id="2_4tcds"]
+
+[node name="Image" type="Window"]
+title = "Confidential.png"
+unresizable = true
+script = ExtResource("1_hbsfr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+texture = ExtResource("2_4tcds")
+expand_mode = 1
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

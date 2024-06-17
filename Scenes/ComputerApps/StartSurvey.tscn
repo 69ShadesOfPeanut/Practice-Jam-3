@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj2r58u54eq0s"]
+
+[ext_resource type="Script" path="res://Scripts/StartSurvey.gd" id="1_tcpkk"]
+
+[node name="StartSurvey" type="Window"]
+position = Vector2i(0, 36)
+script = ExtResource("1_tcpkk")

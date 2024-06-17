@@ -34,7 +34,7 @@ func ContinuePressed():
 	
 	if CurrentStage >= StagesSize:
 		print("Changing scene to Computer")
-		get_tree().change_scene_to_file("res://Scenes/Computer.tscn")
+		
 		return
 	elif CurrentStage == 1:
 		var LineEditText = LineEditNode.text
