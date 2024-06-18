@@ -220,7 +220,7 @@ outline_size = 0
 
 [node name="Screen" parent="Level/Objects/table/Monitor" instance=ExtResource("3_yaft4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 3.86247e-19, 0, 1, 0, -3.86247e-19, 0, 1, 2.84217e-14, 0.707976, 0.417)
+transform = Transform3D(1, 0, 4.40457e-19, 0, 1, 0, -4.40457e-19, 0, 1, 2.84217e-14, 0.699937, 0.417)
 
 [node name="RubixCube" parent="Level/Objects/table" instance=ExtResource("3_faifh")]
 transform = Transform3D(-0.518923, 0, 0.854821, 0, 1, 0, -0.854821, 0, -0.518923, 0.208125, 1.5842, -1.14081)
