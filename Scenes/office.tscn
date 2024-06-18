@@ -207,8 +207,9 @@ transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 
 transform = Transform3D(1, 0, 1.01644e-19, 0, 1, 0, -1.01644e-19, 0, 1, 0.355127, 0.281649, 0.433587)
 
 [node name="Label3D" type="Label3D" parent="Level/Objects/table/Monitor/StickyNote"]
-transform = Transform3D(0.6, -1.01644e-20, 6.09864e-20, 3.02923e-28, 0.588354, 0.11764, -2.71051e-20, -0.11764, 0.588354, 0.0026271, -0.0480145, -0.00279975)
+transform = Transform3D(0.6, -1.94818e-20, 1.0842e-19, 3.02923e-28, 0.588354, 0.11764, -6.09864e-20, -0.11764, 0.588354, 0.00262707, -0.0480144, -0.00279999)
 shaded = true
+no_depth_test = true
 texture_filter = 0
 text = "Todo list:
 1. Take meds
