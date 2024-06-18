@@ -12,6 +12,7 @@ var CurrentStage = 0
 # Resources
 const Fail = preload("res://Sounds/Fail.wav")
 const ButtonClickSound = preload("res://Sounds/click.ogg")
+const MouseClick = preload("res://Sounds/MouseClick.mp3")
 # Nodes
 @onready var InstructionsLabel : Label = get_node("%Instructions")
 @onready var TitleLabel : Label = get_node("%Title")
@@ -84,3 +85,5 @@ func _input(event : InputEvent):
 	if event is InputEventKey and event.is_pressed():
 		#print("Key pressed")
 		KeyboardClicks.play()
+	elif event.is_action_pressed("LeftClick") or event.is_action_pressed("RightClick"):
+		SoundSystem.PlaySound(MouseClick)
