@@ -30,7 +30,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Enter question here"
-max_length = 20
+max_length = 26
 
 [node name="SubmitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
