@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bw8l3d72ngjk4"]
+[gd_scene load_steps=14 format=3 uid="uid://bw8l3d72ngjk4"]
 
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_7n36v"]
 [ext_resource type="Script" path="res://Scripts/Computer.gd" id="1_f2wnh"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://ntidw85l2efw" path="res://Textures/Icons/SurveyIcon.png" id="6_xf32m"]
 [ext_resource type="PackedScene" uid="uid://bbmcxvjsp55f6" path="res://Scenes/ComputerApps/Confidential.tscn" id="6_xr8gx"]
 [ext_resource type="Texture2D" uid="uid://c6crp7hpjsond" path="res://Textures/Icons/ImageIcon.png" id="7_33wps"]
+[ext_resource type="Texture2D" uid="uid://hsrxp07dffn8" path="res://Textures/Icons/QuestionIcon.png" id="10_3c2ge"]
+[ext_resource type="PackedScene" uid="uid://behwgn8mnkal1" path="res://Scenes/ComputerApps/Questions.tscn" id="10_bf1c1"]
 
 [sub_resource type="Gradient" id="Gradient_8ethe"]
 offsets = PackedFloat32Array(0, 0.172566, 0.376106, 1)
@@ -118,6 +120,16 @@ offset_bottom = 527.0
 Icon = ExtResource("7_33wps")
 IconName = "Confidential.png"
 App = ExtResource("6_xr8gx")
+
+[node name="Questions" parent="Icons" instance=ExtResource("1_lah70")]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 59.0
+offset_right = 324.0
+offset_bottom = 123.0
+Icon = ExtResource("10_3c2ge")
+IconName = "Questions"
+App = ExtResource("10_bf1c1")
 
 [node name="OpenApps" type="Control" parent="."]
 unique_name_in_owner = true

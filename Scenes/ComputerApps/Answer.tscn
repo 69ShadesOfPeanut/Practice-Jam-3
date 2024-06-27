@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd8du31but21x"]
+
+[ext_resource type="Script" path="res://Scripts/WindowNode.gd" id="1_6ttco"]
+
+[node name="Answer" type="Window"]
+title = "Answer"
+size = Vector2i(400, 150)
+script = ExtResource("1_6ttco")
+
+[node name="AnswerLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 150)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Test label please ignore"
+autowrap_mode = 2
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

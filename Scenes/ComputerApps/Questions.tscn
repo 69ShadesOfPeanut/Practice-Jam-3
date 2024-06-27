@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://behwgn8mnkal1"]
+
+[ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_cfycy"]
+[ext_resource type="Script" path="res://Scripts/Questions.gd" id="2_525jm"]
+
+[node name="Questions" type="Window"]
+position = Vector2i(0, 36)
+size = Vector2i(300, 100)
+theme = ExtResource("1_cfycy")
+script = ExtResource("2_525jm")
+DefaultAnswers = Array[String](["Yes", "No", "Definitely", "Definitely not", "Maybe", "Maybe not"])
+ScriptedQuestions = {
+"What happens next": "Your fate.",
+"Where am I": "The place you dread most.",
+"Who am I": "look in the mirror at what you've become."
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Prompt" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Please enter your question:"
+horizontal_alignment = 1
+
+[node name="QuestionEnter" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter question here"
+max_length = 20
+
+[node name="SubmitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Submit"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="VBoxContainer/SubmitButton" to="." method="SubmitButtonPressed"]
