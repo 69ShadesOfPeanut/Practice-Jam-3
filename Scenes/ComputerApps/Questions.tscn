@@ -5,7 +5,7 @@
 
 [node name="Questions" type="Window"]
 position = Vector2i(0, 36)
-size = Vector2i(300, 100)
+size = Vector2i(300, 70)
 theme = ExtResource("1_cfycy")
 script = ExtResource("2_525jm")
 DefaultAnswers = Array[String](["Yes", "No", "Definitely", "Definitely not", "Maybe", "Maybe not"])
@@ -32,9 +32,5 @@ layout_mode = 2
 placeholder_text = "Enter question here"
 max_length = 26
 
-[node name="SubmitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Submit"
-
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
-[connection signal="pressed" from="VBoxContainer/SubmitButton" to="." method="SubmitButtonPressed"]
+[connection signal="text_submitted" from="VBoxContainer/QuestionEnter" to="." method="QuestionSubmitted"]

@@ -14,9 +14,9 @@ const AnswerScene = preload("res://Scenes/ComputerApps/Answer.tscn")
 
 
 # Called when players submit a question
-func SubmitButtonPressed():
+func QuestionSubmitted(text : String):
 	# Return if question is empty
-	if QuestionEnterNode.text.strip_edges(true, true).is_empty():
+	if text.strip_edges(true, true).is_empty():
 		print("Question is empty")
 		QuestionEnterNode.clear()
 		return
@@ -24,13 +24,13 @@ func SubmitButtonPressed():
 	# Make an instance of the answer scene and set properties
 	var AnswerSceneInstance = AnswerScene.instantiate()
 	AnswerSceneInstance.set_position(Vector2(300, 300))
-	AnswerSceneInstance.set_title("Answer to: " + QuestionEnterNode.text)
+	AnswerSceneInstance.set_title("Answer to: " + text)
 	
 	
 	
 	# Goes through scripted questions and sees if question asked matches
 	# if it matches, display the dictionary value / result.
-	var Question = QuestionEnterNode.text.rstrip("?").to_lower()
+	var Question = text.rstrip("?").to_lower()
 	var IsScriptedQuestion = false
 	for key in ScriptedQuestions:
 		if Question == key.to_lower():
