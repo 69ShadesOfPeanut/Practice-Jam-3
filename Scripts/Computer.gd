@@ -4,6 +4,7 @@ extends Control
 # Vars
 # Resources
 const MouseClick = preload("res://Sounds/MouseClick.mp3")
+const OFFICE_COMPUTER_PC_FAN_NOISE_LOOP = preload("res://Sounds/Office Computer PC Fan Noise Loop.wav")
 var SystemTime : Dictionary = Time.get_datetime_dict_from_system()
 # Nodes
 @onready var DateLabel : Label = get_node("%Date")
@@ -13,6 +14,10 @@ var SystemTime : Dictionary = Time.get_datetime_dict_from_system()
 func _ready():
 	# Sets the date
 	DateLabel.set_text(str(SystemTime["day"]) + "/" + str(SystemTime["month"]) + "/" + str(SystemTime["year"]))
+	
+	# Sets ambience
+	Ambience.set_stream(OFFICE_COMPUTER_PC_FAN_NOISE_LOOP)
+	Ambience.play()
 
 
 # Plays typing sounds when pressing keys
