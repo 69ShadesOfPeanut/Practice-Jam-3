@@ -17,6 +17,7 @@ func _input(event: InputEvent) -> void:
 	# Opens control menu for player then fade it out
 	if event.is_action_pressed("Controls"):
 		print("Controls button pressed")
+		TutorialNode.modulate = Color(1, 1, 1, 1)
 		TutorialNode.show()
 		NodeFade()
 
