@@ -2,7 +2,9 @@
 extends Light3D
 
 # Vars
+## The minimum time between light flickers
 @export var MinTime : float
+## The maximum time between light flickers
 @export var MaxTime : float
 
 
