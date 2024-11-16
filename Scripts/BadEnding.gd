@@ -2,6 +2,7 @@
 extends Node
 
 # Vars
+var CanEscape : bool = false
 # Resources
 const THUNDER_STRIKE = preload("res://Sounds/thunder strike.wav")
 const RAIN_ON_ROOF_FROM_INSIDE_1 = preload("res://Sounds/rain on roof from inside 1.wav")
@@ -51,3 +52,13 @@ func AnimationFinished(anim_name):
 	Camera1.set_current(false)
 	await get_tree().create_timer(5).timeout
 	LabelAnimationPlayer.play("EndingText")
+	CanEscape = true
+
+# If the ending animation is finished, go back to computer scene upon user pressing escape
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.keycode == KEY_ESCAPE and CanEscape == true:
+		print("Transferring to computer scene")
+		Ambience.stop()
+		get_tree().change_scene_to_file("res://Scenes/Computer.tscn")
+	else:
+		print("User can't go to computer scene")
