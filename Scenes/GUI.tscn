@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bej32c0gwml5m"]
+[gd_scene load_steps=8 format=3 uid="uid://bej32c0gwml5m"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_shs5h"]
+[ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_vipo2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiymf"]
-bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+bg_color = Color(0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hryp7"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 1)
 
 [sub_resource type="Animation" id="Animation_cw60c"]
 resource_name = "Fade"
@@ -73,6 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_vipo2")
 script = ExtResource("1_shs5h")
 
 [node name="Tutorial" type="Control" parent="."]
@@ -84,7 +89,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Panel" type="Panel" parent="Tutorial"]
+[node name="Background1" type="Panel" parent="Tutorial"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -94,7 +99,23 @@ offset_bottom = 163.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oiymf")
 
-[node name="MarginContainer" type="MarginContainer" parent="Tutorial/Panel"]
+[node name="BackgroundContainer" type="MarginContainer" parent="Tutorial/Background1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Background2" type="Panel" parent="Tutorial/Background1/BackgroundContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hryp7")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/Background1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,13 +127,21 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tutorial/Background1/MarginContainer"]
 layout_mode = 2
-bbcode_enabled = true
-text = "[center][b]Controls[/b][/center]
-[b]SPACE[/b] - Changes camera view
-[b]LEFT CLICK[/b] - Interact
-[b]F1[/b] - Brings up this menu"
+
+[node name="Title" type="Label" parent="Tutorial/Background1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Tutorial/Background1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SPACE - Changes camera view
+LEFT CLICK - Interact
+F1 - Brings up this menu"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Tutorial")
