@@ -1,4 +1,70 @@
-[gd_scene format=3 uid="uid://bej32c0gwml5m"]
+[gd_scene load_steps=6 format=3 uid="uid://bej32c0gwml5m"]
+
+[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_shs5h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiymf"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[sub_resource type="Animation" id="Animation_cw60c"]
+resource_name = "Fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_gf68m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_muttk"]
+_data = {
+"Fade": SubResource("Animation_cw60c"),
+"RESET": SubResource("Animation_gf68m")
+}
 
 [node name="Gui" type="Control"]
 layout_mode = 3
@@ -7,3 +73,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_shs5h")
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Tutorial"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -333.0
+offset_bottom = 163.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiymf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tutorial/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial/Panel/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b]Controls[/b][/center]
+[b]SPACE[/b] - Changes camera view
+[b]LEFT CLICK[/b] - Interact
+[b]F1[/b] - Brings up this menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Tutorial")
+libraries = {
+"": SubResource("AnimationLibrary_muttk")
+}
