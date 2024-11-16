@@ -290,7 +290,7 @@ material = SubResource("FogMaterial_v3yjs")
 
 [node name="Eyes" type="Node3D" parent="Level"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.230009, 1, 6.43576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186915, 1, 6.86515)
 visible = false
 
 [node name="Eye" type="MeshInstance3D" parent="Level/Eyes"]
