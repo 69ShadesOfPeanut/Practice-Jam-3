@@ -16,6 +16,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	# Opens control menu for player then fade it out
 	if event.is_action_pressed("Controls"):
+		# If help is already shown, cancel action
+		if TutorialNode.is_visible() or AnimationPlayerNode.is_playing():
+			print("Cancelled help menu. Action already occuring")
+			return
+		
 		print("Controls button pressed")
 		TutorialNode.modulate = Color(1, 1, 1, 1)
 		TutorialNode.show()
