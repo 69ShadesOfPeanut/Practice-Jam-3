@@ -6,7 +6,7 @@ var MasterBus := AudioServer.get_bus_index("Master")
 var SFXBus := AudioServer.get_bus_index("SFX")
 var AmbienceBus := AudioServer.get_bus_index("Ambience")
 # Nodes
-@onready var MasterSlide : HSlider = get_node("%MasterSlider")
+@onready var MasterSlider : HSlider = get_node("%MasterSlider")
 @onready var MasterLabel : Label = get_node("%MasterLabel")
 @onready var SFXSlider : HSlider = get_node("%SFXSlider")
 @onready var AmbienceSlider : HSlider = get_node("%AmbienceSlider")
@@ -17,6 +17,7 @@ var AmbienceBus := AudioServer.get_bus_index("Ambience")
 ## Setup the scene for when it is created
 func _ready() -> void:
 	# Setup volume sliders
+	MasterSlider.value = AudioServer.get_bus_volume_db(MasterBus)
 	SFXSlider.value = AudioServer.get_bus_volume_db(SFXBus)
 	AmbienceSlider.value = AudioServer.get_bus_volume_db(AmbienceBus)
 	# Setup volume labels
