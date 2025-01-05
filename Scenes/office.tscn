@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=47 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
 [ext_resource type="Script" path="res://Scripts/CameraSwapHandler.gd" id="20_x5m4n"]
 [ext_resource type="PackedScene" uid="uid://bej32c0gwml5m" path="res://Scenes/GUI.tscn" id="22_76d5l"]
+[ext_resource type="PackedScene" uid="uid://cpxq1icpn5bii" path="res://Scenes/PlayerCharacter.tscn" id="23_g16hd"]
 [ext_resource type="PackedScene" uid="uid://7wkfywkp5pgd" path="res://Imports/WheelChair.glb" id="23_hnrqd"]
 [ext_resource type="PackedScene" uid="uid://w1e8wsr1880m" path="res://Imports/IVStand.glb" id="24_veeod"]
 
@@ -72,6 +73,9 @@ size = Vector3(10, 5, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_ykc6h"]
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(1, 5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lms5m"]
+size = Vector3(1.98645, 2.28491, 3.72681)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh0nb"]
 albedo_texture = ExtResource("9_tf8sw")
@@ -211,6 +215,15 @@ skeleton = NodePath("../..")
 [node name="table" parent="Level/Objects" instance=ExtResource("1_rbkf7")]
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, -0.0435683, -2.38419e-07, -1.84724)
 
+[node name="DeskArea" type="Area3D" parent="Level/Objects/table"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0, 2.25064, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/table/DeskArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.493226, 0.0758057, -0.223022)
+shape = SubResource("BoxShape3D_lms5m")
+
 [node name="Monitor" parent="Level/Objects/table" instance=ExtResource("2_h68b3")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.136442, 1.47197, -0.108921)
 
@@ -330,7 +343,8 @@ script = ExtResource("16_txpqj")
 MinTime = 0.2
 MaxTime = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="DeskCam" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906, -1.081)
 current = true
 script = ExtResource("20_x5m4n")
@@ -338,5 +352,9 @@ script = ExtResource("20_x5m4n")
 [node name="DoorCam" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 3.85159e-08, 0.903055, 0.592673)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("23_g16hd")]
+unique_name_in_owner = true
+transform = Transform3D(0.746011, 0, -0.665934, 0, 1, 0, 0.665934, 0, 0.746011, -0.722446, 0.681558, -0.536148)
 
 [connection signal="request_completed" from="Buttons/HTTPRequest" to="Buttons" method="HttpRequestComplete"]
