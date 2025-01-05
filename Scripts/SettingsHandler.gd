@@ -1,5 +1,5 @@
 ## Script that handles the settings
-extends Window
+extends WindowNode
 
 # Vars
 var MasterBus := AudioServer.get_bus_index("Master")
@@ -12,7 +12,6 @@ var AmbienceBus := AudioServer.get_bus_index("Ambience")
 @onready var AmbienceSlider : HSlider = get_node("%AmbienceSlider")
 @onready var SFXLabel : Label = get_node("%SFXLabel")
 @onready var AmbienceLabel : Label = get_node("%AmbienceLabel")
-
 
 ## Setup the scene for when it is created
 func _ready() -> void:
@@ -43,7 +42,3 @@ func UpdateAudioLabels():
 	SFXLabel.text = "SFX: " + str(AudioServer.get_bus_volume_db(SFXBus) + 50)
 	AmbienceLabel.text = "Ambience: " + str(AudioServer.get_bus_volume_db(AmbienceBus) + 50)
 	MasterLabel.text = "Master: " + str(AudioServer.get_bus_volume_db(MasterBus) + 50)
-
-## Close window when requested
-func CloseRequested() -> void:
-	queue_free()
