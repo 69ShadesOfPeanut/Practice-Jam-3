@@ -68,3 +68,4 @@ func Interaction():
 	match ColliderName:
 		"DeskArea":
 			DeskCamNode.current = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
