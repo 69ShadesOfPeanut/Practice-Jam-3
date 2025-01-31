@@ -141,7 +141,8 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "SPACE - Changes camera view
 LEFT CLICK - Interact
-F1 - Brings up this menu"
+F1 - Brings up this menu
+ESC - Stand up from the desk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Tutorial")
