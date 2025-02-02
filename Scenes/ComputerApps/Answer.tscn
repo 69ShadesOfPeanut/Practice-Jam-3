@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd8du31but21x"]
+[gd_scene load_steps=3 format=3 uid="uid://bd8du31but21x"]
 
 [ext_resource type="Script" path="res://Scripts/WindowNode.gd" id="1_6ttco"]
+[ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="1_g6k44"]
 
 [node name="Answer" type="Window"]
 title = "Answer"
 size = Vector2i(400, 150)
+theme_override_fonts/title_font = ExtResource("1_g6k44")
+theme_override_font_sizes/title_font_size = 32
 script = ExtResource("1_6ttco")
 
 [node name="AnswerLabel" type="Label" parent="."]

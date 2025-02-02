@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3kqwck3gr4ms"]
+[gd_scene load_steps=4 format=3 uid="uid://b3kqwck3gr4ms"]
 
 [ext_resource type="Script" path="res://Scripts/SettingsHandler.gd" id="1_47xox"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_we2iq"]
+[ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="2_kdm8q"]
 
 [node name="Settings" type="Window"]
 title = "Settings"
@@ -10,6 +11,8 @@ size = Vector2i(124, 144)
 wrap_controls = true
 unresizable = true
 theme = ExtResource("1_we2iq")
+theme_override_fonts/title_font = ExtResource("2_kdm8q")
+theme_override_font_sizes/title_font_size = 32
 script = ExtResource("1_47xox")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
