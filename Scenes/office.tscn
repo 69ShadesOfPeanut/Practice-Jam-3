@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=63 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -20,9 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="18_6hc8k"]
 [ext_resource type="Script" path="res://Scripts/CameraSwapHandler.gd" id="20_x5m4n"]
 [ext_resource type="PackedScene" uid="uid://bej32c0gwml5m" path="res://Scenes/GUI.tscn" id="22_76d5l"]
+[ext_resource type="PackedScene" uid="uid://kobec8fdvbda" path="res://Imports/Bed2_01.fbx" id="22_fyip1"]
 [ext_resource type="PackedScene" uid="uid://cpxq1icpn5bii" path="res://Scenes/PlayerCharacter.tscn" id="23_g16hd"]
 [ext_resource type="PackedScene" uid="uid://7wkfywkp5pgd" path="res://Imports/WheelChair.glb" id="23_hnrqd"]
+[ext_resource type="PackedScene" uid="uid://crqyw87wfvsm1" path="res://Imports/Bed_Table_02.fbx" id="23_qmg75"]
+[ext_resource type="PackedScene" uid="uid://dw3u0l5yi4xyv" path="res://Imports/OfficeChair_01.fbx" id="24_sdjka"]
 [ext_resource type="PackedScene" uid="uid://w1e8wsr1880m" path="res://Imports/IVStand.glb" id="24_veeod"]
+[ext_resource type="PackedScene" uid="uid://coe0gpn3rd275" path="res://Imports/Cupboard.fbx" id="25_1vh4n"]
+[ext_resource type="PackedScene" uid="uid://cqnaqbckmbhud" path="res://Imports/Carpet.fbx" id="26_7lkrq"]
 
 [sub_resource type="Environment" id="Environment_ce6u3"]
 background_energy_multiplier = 0.0
@@ -114,6 +119,15 @@ size = Vector2(0.212, 0.3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_may4c"]
 size = Vector3(0.808838, 1.99561, 0.572998)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_npp55"]
+size = Vector3(0.896027, 1, 1.88231)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25pvf"]
+size = Vector3(0.564209, 1, 0.457153)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lc1av"]
+size = Vector3(1.17041, 1.61255, 0.936035)
+
 [sub_resource type="FogMaterial" id="FogMaterial_v3yjs"]
 albedo = Color(0.230315, 0.230315, 0.230315, 1)
 
@@ -163,8 +177,8 @@ bus = &"SFX"
 
 [node name="CeilingLight" type="OmniLight3D" parent="Level"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95488, 0)
-light_color = Color(1, 1, 0.941176, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26795, 0)
+light_color = Color(0.837696, 0.770683, 0.714326, 1)
 shadow_enabled = true
 omni_range = 5.73354
 script = ExtResource("16_txpqj")
@@ -377,6 +391,42 @@ transform = Transform3D(-15, 0, 25.9808, 0, 30, 0, -25.9808, 0, -15, -1.35175, 0
 
 [node name="IVStand" parent="Level/Objects/HospitalEquipment" instance=ExtResource("24_veeod")]
 transform = Transform3D(-26.3735, 0, 14.2982, 0, 30, 0, -14.2982, 0, -26.3735, -0.854482, 0.0487446, 2.20092)
+
+[node name="Bed2_01" parent="Level/Objects" instance=ExtResource("22_fyip1")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 2.00809, 0.0932647, -1.69717)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Objects/Bed2_01"]
+transform = Transform3D(0.0125, 0, 0, 0, 0.0125, 0, 0, 0, 0.0125, -0.00542896, 0.00613673, 0.00695715)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Bed2_01/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440536, 0, -0.370155)
+shape = SubResource("BoxShape3D_npp55")
+
+[node name="Bed_Table_02" parent="Level/Objects" instance=ExtResource("23_qmg75")]
+transform = Transform3D(120, 0, 0, 0, 120, 0, 0, 0, 120, 1.20124, 0.0513348, -2.16187)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Objects/Bed_Table_02"]
+transform = Transform3D(0.00833333, 0, 0, 0, 0.00833333, 0, 0, 0, 0.00833333, 1.01533e-05, -0.00042779, -0.00234147)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Bed_Table_02/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0198975, 0, 0.271423)
+shape = SubResource("BoxShape3D_25pvf")
+
+[node name="OfficeChair_01" parent="Level/Objects" instance=ExtResource("24_sdjka")]
+transform = Transform3D(45.6479, 0, 65.6983, 0, 80, 0, -65.6983, 0, 45.6479, -0.711657, 0.048468, -1.14889)
+
+[node name="Cupboard" parent="Level/Objects" instance=ExtResource("25_1vh4n")]
+transform = Transform3D(-80, 0, -6.99382e-06, 0, 80, 0, 6.99382e-06, 0, -80, 1.98574, 0.0481783, 2.21763)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level/Objects/Cupboard"]
+transform = Transform3D(-0.0125, 0, 1.09278e-09, 0, 0.0125, 0, -1.09278e-09, 0, -0.0125, -0.00147156, -0.000602232, -0.00266386)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Cupboard/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0852051, 0.869019, 0.0319824)
+shape = SubResource("BoxShape3D_lc1av")
+
+[node name="Carpet" parent="Level/Objects" instance=ExtResource("26_7lkrq")]
+transform = Transform3D(-4.37114e-06, 0, 100, 0, 100, 0, -100, 0, -4.37114e-06, -0.0377608, 0.0533748, 0.416335)
 
 [node name="FogVolume" type="FogVolume" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6973, 7.44698)
