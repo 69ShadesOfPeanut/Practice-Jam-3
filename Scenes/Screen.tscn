@@ -1,26 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://cboulabfu8lq6"]
+[gd_scene load_steps=7 format=3 uid="uid://cboulabfu8lq6"]
 
 [ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_tb1gk"]
-[ext_resource type="Texture2D" uid="uid://cofmvdfjpbugm" path="res://Textures/Person.PNG" id="1_vv770"]
-[ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="2_6kmq3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ltj2k"]
-font = ExtResource("2_6kmq3")
-font_size = 128
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dysy"]
-bg_color = Color(0.581033, 0.581033, 0.581033, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68pos"]
-bg_color = Color(0.404511, 0.404511, 0.404511, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wo3rf"]
-bg_color = Color(0.340339, 0.340339, 0.340339, 1)
-
-[sub_resource type="Theme" id="Theme_40w3r"]
-Button/styles/hover = SubResource("StyleBoxFlat_2dysy")
-Button/styles/normal = SubResource("StyleBoxFlat_68pos")
-Button/styles/pressed = SubResource("StyleBoxFlat_wo3rf")
+[ext_resource type="PackedScene" uid="uid://b55w28f1g7r5p" path="res://Scenes/ScreenGUI.tscn" id="2_4qgvy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0ytha"]
 size = Vector2(0.66, 0.66)
@@ -46,80 +27,8 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="GUI" type="Control" parent="SubViewport"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 1
-
-[node name="Panel" type="Panel" parent="SubViewport/GUI"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="Background" type="ColorRect" parent="SubViewport/GUI/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0.223103, 0.223103, 0.223103, 1)
-
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/GUI/Panel"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 1152.0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/GUI/Panel/CenterContainer"]
-layout_mode = 2
-
-[node name="Text" type="Label" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
+[node name="ScreenGui" parent="SubViewport" instance=ExtResource("2_4qgvy")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1152, 0)
-layout_mode = 2
-text = "Placeholder text"
-label_settings = SubResource("LabelSettings_ltj2k")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-show_percentage = false
-
-[node name="Buttons" type="HBoxContainer" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme = SubResource("Theme_40w3r")
-theme_override_constants/separation = 30
-
-[node name="YesButton" type="Button" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "Yes"
-
-[node name="NoButton" type="Button" parent="SubViewport/GUI/Panel/CenterContainer/VBoxContainer/Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 64
-text = "No"
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport/GUI/Panel/CenterContainer"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(700, 600)
-layout_mode = 2
-texture = ExtResource("1_vv770")
-expand_mode = 1
 
 [node name="Screen" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_0ytha")

@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://b55w28f1g7r5p"]
+
+[ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="1_fai26"]
+[ext_resource type="Texture2D" uid="uid://cofmvdfjpbugm" path="res://Textures/Person.PNG" id="2_vxd6g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1qen"]
+font = ExtResource("1_fai26")
+font_size = 128
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dysy"]
+bg_color = Color(0.581033, 0.581033, 0.581033, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_68pos"]
+bg_color = Color(0.404511, 0.404511, 0.404511, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wo3rf"]
+bg_color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="Theme" id="Theme_p8akt"]
+Button/styles/hover = SubResource("StyleBoxFlat_2dysy")
+Button/styles/normal = SubResource("StyleBoxFlat_68pos")
+Button/styles/pressed = SubResource("StyleBoxFlat_wo3rf")
+
+[node name="ScreenGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1152.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1152, 0)
+layout_mode = 2
+text = "Placeholder text"
+label_settings = SubResource("LabelSettings_q1qen")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+show_percentage = false
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_p8akt")
+theme_override_constants/separation = 30
+
+[node name="YesButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_fai26")
+theme_override_font_sizes/font_size = 128
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="Panel/CenterContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_fai26")
+theme_override_font_sizes/font_size = 128
+text = "No"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(700, 600)
+layout_mode = 2
+texture = ExtResource("2_vxd6g")
+expand_mode = 1

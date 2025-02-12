@@ -21,12 +21,9 @@ const SwitchOff = preload("res://Sounds/oldwallswitchoff.wav")
 @export var Questions : PackedStringArray
 # Nodes
 @onready var ScreenNode : Node3D = get_node("%Screen")
-@onready var ScreenText : Label = ScreenNode.get_node("%Text")
-@onready var ProgressBarNode : ProgressBar = ScreenNode.get_node("%ProgressBar")
 @onready var CeilingLight : OmniLight3D = get_node("%CeilingLight")
 @onready var Audio3D : AudioStreamPlayer3D = get_node("%3DAudio")
 @onready var CreepyPainting : MeshInstance3D = get_node("%CreepyPainting")
-@onready var ScreenTextureRect : TextureRect = ScreenNode.get_node("%TextureRect")
 @onready var FamilyPhoto : MeshInstance3D = get_node("%FamilyPhoto")
 @onready var PhoneLight : OmniLight3D = get_node("%PhoneLight")
 @onready var PillBottle : Node3D = get_node("%PillBottle")
@@ -34,9 +31,14 @@ const SwitchOff = preload("res://Sounds/oldwallswitchoff.wav")
 @onready var Eyes : Node3D = get_node("%Eyes")
 @onready var HospitalEquipment : Node3D = get_node("%HospitalEquipment")
 @onready var HTTPRequestNode : HTTPRequest = get_node("HTTPRequest")
-@onready var ButtonsContainer : HBoxContainer = ScreenNode.get_node("%Buttons")
+@onready var ScreenGui : Control = ScreenNode.get_node("%ScreenGui")
+@onready var ButtonsContainer : HBoxContainer = ScreenGui.get_node("%Buttons")
 @onready var YesButton : Button = ButtonsContainer.get_node("YesButton")
 @onready var NoButton : Button = ButtonsContainer.get_node("NoButton")
+@onready var ScreenText : Label = ScreenGui.get_node("%Text")
+@onready var ProgressBarNode : ProgressBar = ScreenGui.get_node("%ProgressBar")
+@onready var ScreenTextureRect : TextureRect = ScreenGui.get_node("%TextureRect")
+
 
 
 func _ready():
