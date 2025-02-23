@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=67 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://k5lnrc1ttwc8" path="res://Imports/RubixCube.glb" id="3_faifh"]
 [ext_resource type="PackedScene" uid="uid://cboulabfu8lq6" path="res://Scenes/Screen.tscn" id="3_yaft4"]
 [ext_resource type="PackedScene" uid="uid://cqrfvwm8xy86h" path="res://Imports/Plant.glb" id="4_3ll4h"]
+[ext_resource type="PackedScene" uid="uid://bwenxdekgftf1" path="res://Imports/Window.glb" id="5_2qcsa"]
 [ext_resource type="PackedScene" uid="uid://wcu55p3mjmyn" path="res://Imports/StickyNote.glb" id="5_cckrc"]
 [ext_resource type="FontFile" uid="uid://b4udm80rjpaq0" path="res://Fonts/Kenney Mini.ttf" id="6_snvsx"]
 [ext_resource type="PackedScene" uid="uid://2r5u4vjduogk" path="res://Imports/Painting.glb" id="7_5njab"]
@@ -57,7 +58,7 @@ material = SubResource("StandardMaterial3D_432ye")
 size = Vector3(1, 0.1, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykn4p"]
-albedo_color = Color(0.336608, 0.336608, 0.336608, 1)
+albedo_color = Color(0.337255, 0.341176, 0.337255, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6tcwe"]
 material = SubResource("StandardMaterial3D_ykn4p")
@@ -91,12 +92,24 @@ size = Vector3(10, 5, 0.1)
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(10, 5, 0.1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lassa"]
-points = PackedVector3Array(-2.53869, -1.53968, -0.0896825, 2.53869, 1.55556, 0.0690476, 2.53869, 1.55556, -0.0896825, -2.53869, 1.55556, 0.0690476, 2.53869, -1.53968, 0.0690476, 2.53869, -1.53968, -0.0896825, -2.53869, 1.55556, -0.0896825, -2.53869, -1.53968, 0.0690476)
-
 [sub_resource type="BoxMesh" id="BoxMesh_ykc6h"]
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(1, 5, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nk0iv"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(2.5, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3n8j"]
+size = Vector3(4.9101, 3.11731, 0.214844)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uvi68"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(1.81, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5gahj"]
+material = SubResource("StandardMaterial3D_ykn4p")
+size = Vector3(0.7, 1.465, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mfj1t"]
 size = Vector3(1.81549, 2.90906, 3.6521)
@@ -179,6 +192,7 @@ bus = &"SFX"
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26795, 0)
 light_color = Color(0.837696, 0.770683, 0.714326, 1)
+light_energy = 0.3
 shadow_enabled = true
 omni_range = 5.73354
 script = ExtResource("16_txpqj")
@@ -264,20 +278,39 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.516
 mesh = SubResource("BoxMesh_07kb5")
 skeleton = NodePath("../..")
 
+[node name="Wall9" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0364794, 2.5, 12.4385)
+mesh = SubResource("BoxMesh_ykc6h")
+skeleton = NodePath("../..")
+
 [node name="Wall4" type="MeshInstance3D" parent="Level/Foundation"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.46352, 1.50002, -0.0614709)
-mesh = SubResource("BoxMesh_6tcwe")
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, 1.50002, 1.20268)
+mesh = SubResource("BoxMesh_nk0iv")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level/Foundation/Wall4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Foundation/Wall4/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_lassa")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.246, 0.0132446, -0.0449219)
+shape = SubResource("BoxShape3D_r3n8j")
 
-[node name="Wall9" type="MeshInstance3D" parent="Level/Foundation"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0364794, 2.5, 12.4385)
-mesh = SubResource("BoxMesh_ykc6h")
+[node name="Wall10" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, 1.50002, -1.604)
+mesh = SubResource("BoxMesh_uvi68")
 skeleton = NodePath("../..")
+
+[node name="Wall11" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, 2.41438, -0.355427)
+mesh = SubResource("BoxMesh_5gahj")
+skeleton = NodePath("../..")
+
+[node name="Wall12" type="MeshInstance3D" parent="Level/Foundation"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, -0.0749339, -0.355427)
+mesh = SubResource("BoxMesh_5gahj")
+skeleton = NodePath("../..")
+
+[node name="Window" parent="Level/Foundation" instance=ExtResource("5_2qcsa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.45863, 1.15736, -0.356062)
 
 [node name="Objects" type="Node3D" parent="Level"]
 
@@ -463,6 +496,11 @@ spot_angle = 24.3608
 script = ExtResource("16_txpqj")
 MinTime = 0.2
 MaxTime = 2.0
+
+[node name="OutsideLight" type="SpotLight3D" parent="Level"]
+transform = Transform3D(-4.37114e-08, 0.199368, -0.979925, 0, 0.979925, 0.199368, 1, 8.71465e-09, -4.28339e-08, -4.675, 1.235, -0.38)
+shadow_enabled = true
+spot_range = 30.8375
 
 [node name="DeskCam" type="Camera3D" parent="."]
 unique_name_in_owner = true
