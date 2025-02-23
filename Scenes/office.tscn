@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=68 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -144,6 +144,9 @@ size = Vector3(1.17041, 1.61255, 0.936035)
 [sub_resource type="FogMaterial" id="FogMaterial_v3yjs"]
 albedo = Color(0.230315, 0.230315, 0.230315, 1)
 
+[sub_resource type="FogMaterial" id="FogMaterial_av72h"]
+albedo = Color(0.231373, 0.231373, 0.231373, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ffut"]
 albedo_color = Color(0.919281, 4.47616e-06, 1.15514e-06, 1)
 emission_enabled = true
@@ -193,6 +196,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.26795, 0)
 light_color = Color(0.837696, 0.770683, 0.714326, 1)
 light_energy = 0.3
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 omni_range = 5.73354
 script = ExtResource("16_txpqj")
@@ -466,6 +470,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6973, 7.44698)
 size = Vector3(2, 3.39179, 10.0524)
 material = SubResource("FogMaterial_v3yjs")
 
+[node name="BedroomFog" type="FogVolume" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.184875, 1.6973, -0.0409274)
+size = Vector3(5.73206, 3.39179, 5.24059)
+material = SubResource("FogMaterial_av72h")
+
 [node name="Eyes" type="Node3D" parent="Level"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186915, 1, 6.86515)
@@ -499,6 +508,8 @@ MaxTime = 2.0
 
 [node name="OutsideLight" type="SpotLight3D" parent="Level"]
 transform = Transform3D(-4.37114e-08, 0.199368, -0.979925, 0, 0.979925, 0.199368, 1, 8.71465e-09, -4.28339e-08, -4.675, 1.235, -0.38)
+light_energy = 2.0
+light_volumetric_fog_energy = 1.5
 shadow_enabled = true
 spot_range = 30.8375
 
