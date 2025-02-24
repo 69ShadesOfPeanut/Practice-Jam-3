@@ -105,7 +105,7 @@ size = Vector3(4.9101, 3.11731, 0.214844)
 
 [sub_resource type="BoxMesh" id="BoxMesh_uvi68"]
 material = SubResource("StandardMaterial3D_ykn4p")
-size = Vector3(1.81, 3, 0.1)
+size = Vector3(1.995, 3, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5gahj"]
 material = SubResource("StandardMaterial3D_ykn4p")
@@ -299,7 +299,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.246, 0.0132446, -0.0449219
 shape = SubResource("BoxShape3D_r3n8j")
 
 [node name="Wall10" type="MeshInstance3D" parent="Level/Foundation"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, 1.50002, -1.604)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54234, 1.50002, -1.66621)
 mesh = SubResource("BoxMesh_uvi68")
 skeleton = NodePath("../..")
 
