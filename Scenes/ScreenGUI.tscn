@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b55w28f1g7r5p"]
+[gd_scene load_steps=10 format=3 uid="uid://b55w28f1g7r5p"]
 
 [ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="1_fai26"]
 [ext_resource type="Texture2D" uid="uid://cofmvdfjpbugm" path="res://Textures/Person.PNG" id="2_vxd6g"]
+[ext_resource type="Shader" uid="uid://c7p6tjhgwstb5" path="res://Shaders/CRTScreen.gdshader" id="3_c8ypi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q1qen"]
 font = ExtResource("1_fai26")
@@ -20,6 +21,30 @@ bg_color = Color(0.340339, 0.340339, 0.340339, 1)
 Button/styles/hover = SubResource("StyleBoxFlat_2dysy")
 Button/styles/normal = SubResource("StyleBoxFlat_68pos")
 Button/styles/pressed = SubResource("StyleBoxFlat_wo3rf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxd8y"]
+shader = ExtResource("3_c8ypi")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.1
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.02
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
 
 [node name="ScreenGui" type="Control"]
 layout_mode = 3
@@ -99,3 +124,13 @@ custom_minimum_size = Vector2(700, 600)
 layout_mode = 2
 texture = ExtResource("2_vxd6g")
 expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_kxd8y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
