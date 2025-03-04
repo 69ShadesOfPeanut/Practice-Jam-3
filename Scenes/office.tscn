@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=69 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" uid="uid://d1hgo6pln1qe2" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://w1e8wsr1880m" path="res://Imports/IVStand.glb" id="24_veeod"]
 [ext_resource type="PackedScene" uid="uid://coe0gpn3rd275" path="res://Imports/Cupboard.fbx" id="25_1vh4n"]
 [ext_resource type="PackedScene" uid="uid://cqnaqbckmbhud" path="res://Imports/Carpet.fbx" id="26_7lkrq"]
+[ext_resource type="Script" uid="uid://d4loind5aq0n5" path="res://Scripts/lightning.gd" id="28_1fy8r"]
 
 [sub_resource type="Environment" id="Environment_ce6u3"]
 background_energy_multiplier = 0.0
@@ -513,6 +514,26 @@ light_volumetric_fog_energy = 1.5
 shadow_enabled = true
 spot_range = 30.8375
 
+[node name="Lightning" type="OmniLight3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.675, 1.235, -0.38)
+visible = false
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 30.0
+script = ExtResource("28_1fy8r")
+MinTime = 300.0
+MaxTime = 900.0
+
+[node name="LightningInside" type="OmniLight3D" parent="Level/Lightning"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71485, 0.201238, 0.334182)
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="Timer" type="Timer" parent="Level/Lightning"]
+one_shot = true
+
 [node name="DeskCam" type="Camera3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.906, -1.081)
@@ -528,3 +549,4 @@ unique_name_in_owner = true
 transform = Transform3D(0.746011, 0, -0.665934, 0, 1, 0, 0.665934, 0, 0.746011, -0.722446, 0.681558, -0.536148)
 
 [connection signal="request_completed" from="Buttons/HTTPRequest" to="Buttons" method="HttpRequestComplete"]
+[connection signal="timeout" from="Level/Lightning/Timer" to="Level/Lightning" method="TimerTimeout"]
