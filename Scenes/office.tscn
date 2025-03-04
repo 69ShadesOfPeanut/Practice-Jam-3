@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dd5decral8i2o"]
+[gd_scene load_steps=70 format=3 uid="uid://dd5decral8i2o"]
 
 [ext_resource type="PackedScene" uid="uid://bsk6hpm3nl3ww" path="res://Imports/Door.glb" id="1_2efrd"]
 [ext_resource type="Script" uid="uid://d1hgo6pln1qe2" path="res://Scripts/Office.gd" id="1_3dhej"]
@@ -112,6 +112,9 @@ size = Vector3(1.995, 3, 0.1)
 material = SubResource("StandardMaterial3D_ykn4p")
 size = Vector3(0.7, 1.465, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fy8r"]
+size = Vector3(0.82373, 1.23462, 0.710205)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mfj1t"]
 size = Vector3(1.81549, 2.90906, 3.6521)
 
@@ -176,6 +179,7 @@ Questions = PackedStringArray("Thank you for signing up to our survey! Would you
 [node name="HTTPRequest" type="HTTPRequest" parent="Buttons"]
 
 [node name="Gui" parent="." instance=ExtResource("22_76d5l")]
+unique_name_in_owner = true
 mouse_filter = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -317,6 +321,15 @@ skeleton = NodePath("../..")
 [node name="Window" parent="Level/Foundation" instance=ExtResource("5_2qcsa")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.45863, 1.15736, -0.356062)
 
+[node name="WindowArea" type="Area3D" parent="Level/Foundation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7013, 1.00285, -0.406551)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Foundation/WindowArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0881348, 0.11731, 0.0518799)
+shape = SubResource("BoxShape3D_1fy8r")
+
 [node name="Objects" type="Node3D" parent="Level"]
 
 [node name="table" parent="Level/Objects" instance=ExtResource("1_rbkf7")]
@@ -410,10 +423,12 @@ mesh = SubResource("QuadMesh_qg8wr")
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.42876, 0.0359772, 2.45721)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level/Objects/Door"]
+[node name="DoorObject" type="StaticBody3D" parent="Level/Objects/Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440204, 0.922144, 0)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Door/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Door/DoorObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142822, 0.162354, -0.213501)
 shape = SubResource("BoxShape3D_may4c")
 
@@ -433,10 +448,12 @@ transform = Transform3D(-26.3735, 0, 14.2982, 0, 30, 0, -14.2982, 0, -26.3735, -
 [node name="Bed2_01" parent="Level/Objects" instance=ExtResource("22_fyip1")]
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 2.00809, 0.0932647, -1.69717)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level/Objects/Bed2_01"]
+[node name="BedObject" type="StaticBody3D" parent="Level/Objects/Bed2_01"]
 transform = Transform3D(0.0125, 0, 0, 0, 0.0125, 0, 0, 0, 0.0125, -0.00542896, 0.00613673, 0.00695715)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Bed2_01/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Objects/Bed2_01/BedObject"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440536, 0, -0.370155)
 shape = SubResource("BoxShape3D_npp55")
 

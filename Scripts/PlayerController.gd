@@ -12,6 +12,7 @@ var MouseDelta : Vector2 = Vector2()
 @onready var CameraNode : Camera3D = get_node("Camera3D")
 @onready var RayCast3DNode : RayCast3D = get_node("%RayCast3D")
 @onready var DeskCamNode : Camera3D = get_node("%DeskCam")
+@onready var GuiNode : Control = get_node("%Gui")
 
 
 ## Handle player movement
@@ -69,3 +70,11 @@ func Interaction():
 		"DeskArea":
 			DeskCamNode.current = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		"DoorObject":
+			GuiNode.CreatePopupText("Your bedroom door. It feels as if something is pressing hard. You won't do it.")
+		"WindowArea":
+			GuiNode.CreatePopupText("The outside. It's dark enough to where you can't see 5 feet in front of you. Something or someone could be watching.")
+		"BedObject":
+			GuiNode.CreatePopupText("Your bed. you can't remember the last time you were in your own bed. You long for the comfort of your own bed.")
+		_:
+			print(ColliderName)

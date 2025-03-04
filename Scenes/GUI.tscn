@@ -106,13 +106,13 @@ grow_horizontal = 0
 
 [node name="Background1" type="Panel" parent="Tutorial"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = -7.75
 anchor_right = 1.0
-offset_left = -333.0
-offset_bottom = 163.0
+anchor_bottom = 4.75
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oiymf")
+metadata/_edit_use_anchors_ = true
 
 [node name="BackgroundContainer" type="MarginContainer" parent="Tutorial/Background1"]
 layout_mode = 1
@@ -157,7 +157,49 @@ theme_override_font_sizes/font_size = 32
 text = "SPACE - Changes camera view
 LEFT CLICK - Interact
 F1 - Brings up this menu
-ESC - Stand up from the desk"
+ESC - Stand up from the desk
+F - Look at something"
+
+[node name="PopupText" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="PopupText"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.75
+anchor_top = -2.75
+anchor_right = 6.75
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PopupText/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupTextLabel" type="Label" parent="PopupText/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Placeholder text"
+autowrap_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Tutorial")
