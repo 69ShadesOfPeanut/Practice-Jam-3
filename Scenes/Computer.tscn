@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bw8l3d72ngjk4"]
+[gd_scene load_steps=18 format=3 uid="uid://bw8l3d72ngjk4"]
 
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_7n36v"]
 [ext_resource type="Script" uid="uid://dj8qp7wqhpuki" path="res://Scripts/Computer.gd" id="1_f2wnh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://behwgn8mnkal1" path="res://Scenes/ComputerApps/Questions.tscn" id="10_bf1c1"]
 [ext_resource type="Texture2D" uid="uid://2f5knf0e8ncg" path="res://Textures/Icons/Settings.png" id="12_q2i68"]
 [ext_resource type="PackedScene" uid="uid://b3kqwck3gr4ms" path="res://Scenes/ComputerApps/Settings.tscn" id="12_yeri6"]
+[ext_resource type="Shader" uid="uid://c7p6tjhgwstb5" path="res://Shaders/CRTScreen.gdshader" id="14_qk5mf"]
 
 [sub_resource type="Gradient" id="Gradient_8ethe"]
 offsets = PackedFloat32Array(0, 0.172566, 0.376106, 1)
@@ -22,6 +23,30 @@ colors = PackedColorArray(0, 0, 0, 1, 0.39823, 0.39823, 0.39823, 1, 0.443282, 0.
 gradient = SubResource("Gradient_8ethe")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c1ct"]
+shader = ExtResource("14_qk5mf")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.1
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.004
+shader_parameter/noise_opacity = 0.056
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
 
 [node name="Computer" type="Control"]
 layout_mode = 3
@@ -146,3 +171,13 @@ App = ExtResource("12_yeri6")
 [node name="OpenApps" type="Control" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
+
+[node name="CRTShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6c1ct")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

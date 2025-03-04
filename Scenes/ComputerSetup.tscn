@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmy7tlwmi470s"]
+[gd_scene load_steps=9 format=3 uid="uid://bmy7tlwmi470s"]
 
 [ext_resource type="Script" uid="uid://5mclu570qog" path="res://Scripts/ComputerSetup.gd" id="1_hab8i"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_sr2mj"]
+[ext_resource type="Shader" uid="uid://c7p6tjhgwstb5" path="res://Shaders/CRTScreen.gdshader" id="3_enbly"]
 
 [sub_resource type="Gradient" id="Gradient_e28mv"]
 
@@ -41,6 +42,30 @@ tracks/1/keys = {
 _data = {
 &"NoButtonDrop": SubResource("Animation_tvqp5")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52ib3"]
+shader = ExtResource("3_enbly")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.1
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.004
+shader_parameter/noise_opacity = 0.056
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
 
 [node name="ComputerSetup" type="Control"]
 layout_mode = 3
@@ -184,7 +209,7 @@ text = "No"
 [node name="NoButtonAnim" type="AnimationPlayer" parent="Control/NoButtonDecoy"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_xx25l")
+&"": SubResource("AnimationLibrary_xx25l")
 }
 
 [node name="Continue" type="Button" parent="Control"]
@@ -202,6 +227,16 @@ offset_bottom = 0.255981
 grow_horizontal = 0
 grow_vertical = 0
 text = "Continue"
+
+[node name="CRTShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_52ib3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="Control/VBoxContainer/Inputs/Buttons/YesButton" to="." method="ContinuePressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Inputs/Buttons/NoButton" to="." method="NoButtonPressed"]
