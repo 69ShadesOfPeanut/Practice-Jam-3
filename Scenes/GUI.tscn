@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bej32c0gwml5m"]
+[gd_scene load_steps=10 format=3 uid="uid://bej32c0gwml5m"]
 
 [ext_resource type="Script" uid="uid://cyvffb012am2w" path="res://Scripts/gui.gd" id="1_shs5h"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_vipo2"]
+[ext_resource type="Shader" uid="uid://p6hxxwdhqiae" path="res://Shaders/RetroShader.gdshader" id="3_hnmit"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiymf"]
 bg_color = Color(0.28485, 0.28485, 0.28485, 1)
@@ -69,6 +70,20 @@ _data = {
 &"Fade": SubResource("Animation_cw60c"),
 &"RESET": SubResource("Animation_gf68m")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nn5of"]
+shader = ExtResource("3_hnmit")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.2
+shader_parameter/pixelSize = 1024.0
+shader_parameter/grainIntensity = 0.0
+shader_parameter/use_overlay = true
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
 
 [node name="Gui" type="Control"]
 layout_mode = 3
@@ -149,3 +164,13 @@ root_node = NodePath("../Tutorial")
 libraries = {
 &"": SubResource("AnimationLibrary_muttk")
 }
+
+[node name="RetroShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nn5of")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1

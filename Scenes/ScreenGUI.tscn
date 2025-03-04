@@ -125,7 +125,7 @@ layout_mode = 2
 texture = ExtResource("2_vxd6g")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CRTShader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_kxd8y")
 layout_mode = 1
 anchors_preset = 15
