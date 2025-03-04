@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3kqwck3gr4ms"]
 
-[ext_resource type="Script" path="res://Scripts/SettingsHandler.gd" id="1_47xox"]
+[ext_resource type="Script" uid="uid://clwidibbiblxi" path="res://Scripts/SettingsHandler.gd" id="1_47xox"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_we2iq"]
 [ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="2_kdm8q"]
 

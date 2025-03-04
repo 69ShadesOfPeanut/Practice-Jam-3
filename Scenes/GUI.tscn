@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bej32c0gwml5m"]
 
-[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_shs5h"]
+[ext_resource type="Script" uid="uid://cyvffb012am2w" path="res://Scripts/gui.gd" id="1_shs5h"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_vipo2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiymf"]
@@ -66,8 +66,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_muttk"]
 _data = {
-"Fade": SubResource("Animation_cw60c"),
-"RESET": SubResource("Animation_gf68m")
+&"Fade": SubResource("Animation_cw60c"),
+&"RESET": SubResource("Animation_gf68m")
 }
 
 [node name="Gui" type="Control"]
@@ -147,5 +147,5 @@ ESC - Stand up from the desk"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Tutorial")
 libraries = {
-"": SubResource("AnimationLibrary_muttk")
+&"": SubResource("AnimationLibrary_muttk")
 }

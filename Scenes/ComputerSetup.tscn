@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmy7tlwmi470s"]
 
-[ext_resource type="Script" path="res://Scripts/ComputerSetup.gd" id="1_hab8i"]
+[ext_resource type="Script" uid="uid://5mclu570qog" path="res://Scripts/ComputerSetup.gd" id="1_hab8i"]
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_sr2mj"]
 
 [sub_resource type="Gradient" id="Gradient_e28mv"]
@@ -39,7 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xx25l"]
 _data = {
-"NoButtonDrop": SubResource("Animation_tvqp5")
+&"NoButtonDrop": SubResource("Animation_tvqp5")
 }
 
 [node name="ComputerSetup" type="Control"]

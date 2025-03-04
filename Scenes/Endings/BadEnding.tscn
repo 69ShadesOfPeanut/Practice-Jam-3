@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://shucs0kc0aeg"]
 
 [ext_resource type="PackedScene" uid="uid://cm7x2lgv52j6k" path="res://Imports/Wall.glb" id="1_l2t81"]
-[ext_resource type="Script" path="res://Scripts/BadEnding.gd" id="1_m45l2"]
+[ext_resource type="Script" uid="uid://bct160d4b7ipk" path="res://Scripts/BadEnding.gd" id="1_m45l2"]
 [ext_resource type="PackedScene" uid="uid://dim1jwavqmy7x" path="res://Imports/Floor.glb" id="2_r2g7p"]
 [ext_resource type="PackedScene" uid="uid://bujxyjdojk7l4" path="res://Imports/ShowerTable.glb" id="3_depjt"]
 [ext_resource type="PackedScene" uid="uid://ctycg57qglbiy" path="res://Imports/Toilet.glb" id="4_5a2fd"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dxt82juiwxqnm" path="res://Imports/Lamp.glb" id="13_4sddh"]
 [ext_resource type="PackedScene" uid="uid://cqqgyb76pkhib" path="res://Imports/AlcoholBottleHalf.glb" id="14_8dfhj"]
 [ext_resource type="PackedScene" uid="uid://cqlrxd7s6rfqr" path="res://Imports/AlcoholBottleEmpty.glb" id="15_kqm8u"]
-[ext_resource type="Script" path="res://Scripts/FlickeringLights.gd" id="16_6tiss"]
+[ext_resource type="Script" uid="uid://w7gplc3xs3t5" path="res://Scripts/FlickeringLights.gd" id="16_6tiss"]
 [ext_resource type="PackedScene" uid="uid://d4al5pu1rm05y" path="res://Imports/PillBottle1.glb" id="16_q526s"]
 [ext_resource type="PackedScene" uid="uid://bkhwd6rbu33rk" path="res://Imports/PillBottle2.glb" id="17_5xaqf"]
 [ext_resource type="PackedScene" uid="uid://6k6re80i4127" path="res://Imports/Pill2.glb" id="17_pfd7v"]
@@ -64,8 +64,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1st0g"]
 _data = {
-"Camera": SubResource("Animation_13nuj"),
-"RESET": SubResource("Animation_fk1kn")
+&"Camera": SubResource("Animation_13nuj"),
+&"RESET": SubResource("Animation_fk1kn")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_o4gtl"]
@@ -105,8 +105,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ldqte"]
 _data = {
-"EndingText": SubResource("Animation_1rkwy"),
-"RESET": SubResource("Animation_me1yd")
+&"EndingText": SubResource("Animation_1rkwy"),
+&"RESET": SubResource("Animation_me1yd")
 }
 
 [node name="BadEnding" type="Node"]
@@ -427,7 +427,7 @@ current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera1"]
 libraries = {
-"": SubResource("AnimationLibrary_1st0g")
+&"": SubResource("AnimationLibrary_1st0g")
 }
 
 [node name="Camera2" type="Camera3D" parent="."]
@@ -459,7 +459,7 @@ label_settings = SubResource("LabelSettings_o4gtl")
 [node name="LabelAnimationPlayer" type="AnimationPlayer" parent="UI/CenterContainer/EndingText"]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_ldqte")
+&"": SubResource("AnimationLibrary_ldqte")
 }
 
 [connection signal="animation_finished" from="Camera1/AnimationPlayer" to="." method="AnimationFinished"]

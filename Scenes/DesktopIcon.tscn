@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://crsn8oneac34e" path="res://Themes/ComputerTheme.tres" id="1_lursa"]
 [ext_resource type="Texture2D" uid="uid://dhe5eqtc0o6s6" path="res://icon.svg" id="1_oxei4"]
-[ext_resource type="Script" path="res://Scripts/DesktopIcon.gd" id="2_hoysa"]
+[ext_resource type="Script" uid="uid://2jxljc5ufytb" path="res://Scripts/DesktopIcon.gd" id="2_hoysa"]
 
 [node name="DesktopIcon" type="TextureButton"]
 offset_right = 64.0

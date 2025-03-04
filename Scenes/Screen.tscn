@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cboulabfu8lq6"]
 
-[ext_resource type="Script" path="res://Scripts/Monitor.gd" id="1_tb1gk"]
+[ext_resource type="Script" uid="uid://baso3cfmyx5ng" path="res://Scripts/Monitor.gd" id="1_tb1gk"]
 [ext_resource type="PackedScene" uid="uid://b55w28f1g7r5p" path="res://Scenes/ScreenGUI.tscn" id="2_4qgvy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0ytha"]

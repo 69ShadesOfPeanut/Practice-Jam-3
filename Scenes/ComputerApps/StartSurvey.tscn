@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj2r58u54eq0s"]
 
 [ext_resource type="FontFile" uid="uid://dfgo3kpy7k61u" path="res://Fonts/Kenney Pixel.ttf" id="1_0cegn"]
-[ext_resource type="Script" path="res://Scripts/StartSurvey.gd" id="1_tcpkk"]
+[ext_resource type="Script" uid="uid://cl5otrysqkig5" path="res://Scripts/StartSurvey.gd" id="1_tcpkk"]
 
 [node name="StartSurvey" type="Window"]
 title = "Confirmation"
