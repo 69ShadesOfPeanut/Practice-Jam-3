@@ -8,6 +8,7 @@ var AwaitingTextDisappear : bool = false
 @onready var AnimationPlayerNode : AnimationPlayer = get_node("AnimationPlayer")
 @onready var PopupText : Control = get_node("PopupText")
 @onready var PopupTextLabel : Label = get_node("%PopupTextLabel")
+@onready var PopupTextAnimPlayer : AnimationPlayer = get_node("%PopupTextAnimPlayer")
 
 
 # Upon load Show the help menu then fade it out
@@ -37,25 +38,30 @@ func NodeFade() -> void:
 ## Put text in the popup text field
 func CreatePopupText(text : String):
 	# Check if countdown is already happening
-	if AwaitingTextDisappear == true:
-		print("Function is already awaiting text disappear. Aborting")
+	if PopupTextAnimPlayer.is_playing() == true:
+		print("Function is already awaiting text disappear. Skipping text")
+		SkipText()
 		return
 	
-	# Set text
+	# Set text and show popup text
 	print("Popup text called")
 	print("Text given: " + text)
 	PopupTextLabel.text = text
 	PopupText.show()
 	PopupText.modulate.a = 1.0
 	
-	AwaitingTextDisappear = true
-	await get_tree().create_timer(10).timeout
-	print("Starting modulation process")
-	# Modulate alpha till text is invisible
-	while AwaitingTextDisappear == true:
-		PopupText.modulate.a -= 0.03
-		if PopupText.modulate.a <= 0.0:
-			AwaitingTextDisappear = false
-			PopupText.hide()
-			print("Text popup hidden")
-		await get_tree().create_timer(0.1).timeout
+	
+	# Start fade animation
+	print("Starting modulation animation")
+	PopupTextAnimPlayer.play("PopupTextFade")
+	await PopupTextAnimPlayer.animation_finished
+
+## Attempt to skip on screen text
+func SkipText():
+	print("Skip text called")
+	
+	PopupTextAnimPlayer.stop()
+	
+	# Hide GUI element
+	PopupText.modulate.a = 0
+	PopupText.hide()

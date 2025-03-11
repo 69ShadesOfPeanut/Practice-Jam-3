@@ -60,6 +60,7 @@ func _process(delta: float) -> void:
 func Interaction():
 	# Check if raycast is colliding with anything
 	if RayCast3DNode.get_collider() == null:
+		GuiNode.SkipText()
 		return
 	
 	var ColliderName = RayCast3DNode.get_collider().name
@@ -77,4 +78,5 @@ func Interaction():
 		"BedObject":
 			GuiNode.CreatePopupText("Your bed. you can't remember the last time you were in your own bed. You long for the comfort of your own bed.")
 		_:
-			print(ColliderName)
+			print("Object not predetermined object. Object name: " + str(ColliderName))
+			GuiNode.SkipText()
